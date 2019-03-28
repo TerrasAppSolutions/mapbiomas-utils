@@ -5,7 +5,7 @@ def biomas(path_folder, years):
 
     for year in years:        
 
-        path_json = path_folder + "/collection-3-cobertura-biomas-" + str(year) + "_ee_export.geojson"
+        path_json = path_folder + "/collection-31-cobertura-biomas-" + str(year) + "-4ee_export.geojson"
 
         data = insert_cobertura_postgres.get_data(path_json)
 
