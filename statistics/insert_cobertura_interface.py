@@ -34,7 +34,7 @@ def interface():
     parser = argparse.ArgumentParser(description='Export the statistics for the postgres database')
 
     parser.add_argument('layer', type=str, help='choose the layer', 
-                    choices=['biomas'])
+                    choices=['biomas', 'car_biomas'])
 
     parser.add_argument('dir_geojson', type=str,  help='the geojon folder')
     
@@ -45,6 +45,10 @@ def interface():
     years = range(1985, 2018)
     if layer == "biomas":
         biomas(dir_geojson, years)
+    
+    if layer == "car_biomas":
+        car_biomas(dir_geojson, years)
+
 
 
 if __name__ == "__main__":
