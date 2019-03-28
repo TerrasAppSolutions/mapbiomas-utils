@@ -3,7 +3,7 @@ import json
 import psycopg2
 import psycopg2.extras
 import config
-
+from functools import reduce
 
 def get_data(path_json):
 
