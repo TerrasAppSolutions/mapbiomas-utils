@@ -14,8 +14,20 @@ def biomas(path_folder, years):
 
         insert_cobertura_postgres.insert_postgres(data_formatted)
 
+def car_biomas(path_folder, years):
 
+    idprefix=10000000
 
+    for year in years:   
+        path_json = path_folder + "/collection-31-cobertura-biomas-car-" + str(year) + "-4ee_export.geojson"
+
+        data = insert_cobertura_postgres.get_data(path_json)
+
+        data_formatted = insert_cobertura_postgres.format_data(data, idprefix)
+
+        insert_cobertura_postgres.insert_postgres(data_formatted)
+
+        print(year)
 
 def interface():
 

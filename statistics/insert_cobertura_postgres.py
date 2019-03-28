@@ -22,7 +22,7 @@ def get_data(path_json):
         result.append(info)
     return result
 
-def format_data(data):
+def format_data(data, idprefix=0):
     
     classes = [str(i) for i in range(0, 34)]
 
@@ -49,7 +49,7 @@ def format_data(data):
                 'classe':int(value),
                 'area':area,
                 'ano':str(ano),   
-                'territorio':territorio,
+                'territorio':territorio + idprefix,
                 'percentagem':round((area/area_total)*100, 4)      
 
                 })
