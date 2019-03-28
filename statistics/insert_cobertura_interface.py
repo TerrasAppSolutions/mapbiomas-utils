@@ -1,5 +1,6 @@
 import insert_cobertura_postgres
 import argparse
+from functools import reduce
 
 def biomas(path_folder, years):
 
