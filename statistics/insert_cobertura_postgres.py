@@ -60,7 +60,6 @@ def insert_postgres(data_postgres):
 
     conn = psycopg2.connect(dbname=config.postgres_db, user=config.postgres_user, host=config.postgres_host, port=config.postgres_port, password=config.postgres_password)
 
-
     cur = conn.cursor()
 
     sqlinsert = """INSERT INTO 	estatisticas (territorio, classe, ano, area, percentagem)
@@ -78,3 +77,5 @@ def insert_postgres(data_postgres):
 
     conn.commit()
     conn.close()
+
+
