@@ -12,9 +12,9 @@ def send_to_postgres_municipios(path_json, year, idprefix = 0):
     data_estados = insert_cobertura_municipios_postgres.get_data_estados(data)
     data_pais = insert_cobertura_municipios_postgres.get_data_pais(data)
 
-    data_municipios_formatted = insert_cobertura_municipios_postgres.format_data(data_municipios, col_territorio='featureid')
-    data_estados_formatted = insert_cobertura_municipios_postgres.format_data(data_estados, col_territorio='UF')
-    data_pais_formatted = insert_cobertura_municipios_postgres.format_data(data_pais, col_territorio='PAIS')
+    data_municipios_formatted = insert_cobertura_municipios_postgres.format_data(data_municipios, 'featureid', idprefix)
+    data_estados_formatted = insert_cobertura_municipios_postgres.format_data(data_estados, 'UF', idprefix)
+    data_pais_formatted = insert_cobertura_municipios_postgres.format_data(data_pais, 'PAIS', idprefix)
 
     insert_cobertura_municipios_postgres.insert_postgres(data_municipios_formatted)
     insert_cobertura_municipios_postgres.insert_postgres(data_pais_formatted)
@@ -64,12 +64,20 @@ def municipios(path_folder, years):
         path_json = path_folder + "/collection-31-cobertura-municipios-" + str(year) + "-4ee_export.geojson"
         send_to_postgres_municipios(path_json, year)
 
+
+def car_municipios(path_folder, years):
+    idprefix = 10000000
+
+    for year in years:
+        path_json = path_folder + "/collection-31-cobertura-municipios-" + str(year) + "-4ee_export.geojson"
+        send_to_postgres_municipios(path_json, year, idprefix)
+
 def interface():
 
     parser = argparse.ArgumentParser(description='Export the statistics for the postgres database')
 
     parser.add_argument('layer', type=str, help='choose the layer', 
-                    choices=['biomas', 'car_biomas', 'bacias_nivel_1', 'bacias_nivel_2', 'municipios_estado_pais'])
+                    choices=['biomas', 'car_biomas', 'bacias_nivel_1', 'bacias_nivel_2', 'municipios_estado_pais', 'car_municipios'])
 
     parser.add_argument('dir_geojson', type=str,  help='the geojon folder')
     
@@ -93,9 +101,8 @@ def interface():
     if layer == "municipios_estado_pais":
         municipios(dir_geojson, years)
 
-
-
-
+    if layer == "car_municipios":
+        car_municipios(dir_geojson, years)
 
 
 if __name__ == "__main__":
