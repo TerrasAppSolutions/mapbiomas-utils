@@ -3,6 +3,8 @@ import argparse
 from functools import reduce
 
 def send_to_postgres(path_json, year, idprefix = 0):
+    print(year)
+
     data = insert_cobertura_postgres.get_data(path_json)
 
     data_formatted = insert_cobertura_postgres.format_data(data, idprefix)
