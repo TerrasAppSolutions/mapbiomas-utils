@@ -69,7 +69,7 @@ def car_municipios(path_folder, years):
     idprefix = 10000000
 
     for year in years:
-        path_json = path_folder + "/collection-31-cobertura-municipios-" + str(year) + "-4ee_export.geojson"
+        path_json = path_folder + "/collection-31-cobertura-municipios-car-" + str(year) + "-4ee_export.geojson"
         send_to_postgres_municipios(path_json, year, idprefix)
 
 def interface():
