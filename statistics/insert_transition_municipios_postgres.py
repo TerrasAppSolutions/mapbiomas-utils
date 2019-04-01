@@ -78,7 +78,7 @@ def format_data_estados(data, idprefix=0):
             data_result.append(
                 {
 
-                    'territorio':estadoid + idprefix,
+                    'territorio':int(estadoid) + idprefix,
                     'ano_inicial':ano_inicial,
                     'ano_final':ano_final,
                     'classe_inicial' : classe1,
@@ -145,7 +145,7 @@ def format_data_pais(data, idprefix=0):
             data_result.append(
                 {
 
-                    'territorio':estadoid + idprefix,
+                    'territorio':int(estadoid) + idprefix,
                     'ano_inicial':ano_inicial,
                     'ano_final':ano_final,
                     'classe_inicial' : classe1,
