@@ -46,7 +46,7 @@ def get_all_geojsons_paths(path_folder):
         geojsons_paths = geojsons_paths + [os.path.join(root,file) for file in files if file.endswith(".geojson")]
     return geojsons_paths
 
-def get_transitions_meta(path_folder, filter_layer=None):
+def get_transitions_meta(path_folder, filter_layer=None, year1=None, year2=None):
 
     result = []
     for json_path in get_all_geojsons_paths(path_folder):
@@ -63,8 +63,11 @@ def get_transitions_meta(path_folder, filter_layer=None):
     if filter_layer:
         result = [meta for meta in result if meta["layer_name"] == filter_layer]
 
-    return result
+    if year1 == None and year2 == None:
+        result = [meta for meta in result if meta["year1"] == year1]
+        result = [meta for meta in result if meta["year2"] == year2]
 
+    return result
 
 def format_data(data, idprefix=0):
     arranjos = get_arranjos()
@@ -88,7 +91,6 @@ def format_data(data, idprefix=0):
             classe2 = 27 if classe2 == 0 else classe2
 
             data_result.append({
-
                 'territorio':int(territorio) + idprefix,
                 'ano_inicial':ano_inicial,
                 'ano_final':ano_final,

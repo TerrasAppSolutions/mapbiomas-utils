@@ -79,7 +79,7 @@ def interface():
                         choices=['biomas', 'car_biomas', 'bacias_nivel_1', 'bacias_nivel_2', 
                         'municipios_estado_pais', 'car_municipios'])
 
-    parser.add_argument('dir_geojson', type=str,  help='the geojon folder')
+    parser.add_argument('dir_geojson', type=str,  help='the geojson folder')
     
     
     layer = parser.parse_args().layer
