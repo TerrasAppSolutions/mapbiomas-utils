@@ -12,7 +12,7 @@ def get_path_json(path_folder, years_pair, filter_layer):
     year1 = years_pair.split('_')[0]
     year2 = years_pair.split('_')[1]
     json_name = insert_transition_postgres.get_transitions_meta(path_folder,
-    filter_layer, year1=year1, year2=year2)[0]
+    filter_layer, year1=year1, year2=year2)[0]['json_name']
     return path_folder + "/" + json_name
 
 def biomas(path_folder, transition_years):
