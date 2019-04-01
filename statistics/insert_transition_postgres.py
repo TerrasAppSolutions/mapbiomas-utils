@@ -52,7 +52,7 @@ def get_transitions_meta(path_folder, filter_layer=None, year1=None, year2=None)
     for json_path in get_all_geojsons_paths(path_folder):
         json_name = json_path.split('/')[-1]
         meta = get_json_metadata(json_name)
-        if meta["collection_type"] != 'transition':
+        if meta["collection_type"] != 'transicao':
             continue
         meta['year1'] = meta['years_pair'].split('.')[0]
         meta['year2'] = meta['years_pair'].split('.')[1]
