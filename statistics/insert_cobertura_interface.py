@@ -4,8 +4,6 @@ import argparse
 from functools import reduce
 
 def send_to_postgres_municipios(path_json, idprefix = 0):
-
-
     data = insert_cobertura_municipios_postgres.get_data(path_json)
 
     data_municipios = insert_cobertura_municipios_postgres.get_data_municipios(data)

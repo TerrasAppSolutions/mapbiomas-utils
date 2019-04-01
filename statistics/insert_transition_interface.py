@@ -1,6 +1,19 @@
 import insert_transition_postgres
+import insert_transition_municipios_postgres
 import argparse
 from functools import reduce
+
+
+def send_to_postgres_municipios(path_json, idprefix = 0):
+    data = insert_transition_municipios_postgres.get_data(path_json)
+
+    data_municipios_formatted = insert_transition_municipios_postgres.format_data(data, idprefix)
+    data_estados_formatted = insert_transition_municipios_postgres.format_data_estados(data, idprefix)
+    data_pais_formatted = insert_transition_municipios_postgres.format_data_pais(data, idprefix)
+
+    insert_transition_municipios_postgres.insert_postgres(data_municipios_formatted)
+    insert_transition_municipios_postgres.insert_postgres(data_estados_formatted)
+    insert_transition_municipios_postgres.insert_postgres(data_pais_formatted)
 
 
 def send_to_postgres(path_json, idprefix = 0):
@@ -21,13 +34,59 @@ def biomas(path_folder, transition_years):
         path_json = get_path_json(path_folder, years_pair, filter_layer)
         send_to_postgres(path_json)
 
+def areas_protegidas(path_folder, transition_years):
+    for years_pair in transition_years:
+        filter_layer = 'areas.protegidas'
+        path_json = get_path_json(path_folder, years_pair, filter_layer)
+        send_to_postgres(path_json)
+
+def bacias_nivel_1(path_folder, transition_years):
+
+    idprefix = 7000000
+
+    for years_pair in transition_years:
+        filter_layer = 'bacias.nivel.1'
+        path_json = get_path_json(path_folder, years_pair, filter_layer)
+        send_to_postgres(path_json,  idprefix)
+
+def bacias_nivel_2(path_folder, transition_years):
+
+    idprefix = 7100000
+
+    for years_pair in transition_years:
+        filter_layer = 'bacias.nivel.2'
+        path_json = get_path_json(path_folder, years_pair, filter_layer)
+        send_to_postgres(path_json,  idprefix)
+
+def municipios(path_folder, transition_years):
+    for years_pair in transition_years:
+        filter_layer = 'municipios'
+        path_json = get_path_json(path_folder, years_pair, filter_layer)
+        send_to_postgres_municipios(path_json)
+
+def all_layers(path_folder, transition_years):
+    for years_pair in transition_years:
+
+        path_json = get_path_json(path_folder, years_pair, 'biomas')
+        send_to_postgres(path_json)
+
+        path_json = get_path_json(path_folder, years_pair, 'bacias.nivel.1')
+        send_to_postgres(path_json)
+
+        path_json = get_path_json(path_folder, years_pair, 'bacias.nivel.2')
+        send_to_postgres(path_json)
+
+        path_json = get_path_json(path_folder, years_pair, 'municipios')
+        send_to_postgres_municipios(path_json)
+
+
 def interface():
 
     parser = argparse.ArgumentParser(description='Export the statistics for the postgres database')
 
 
     parser.add_argument('layer', type=str, help='choose the layer', 
-                        choices=['biomas', 'car_biomas', 'bacias_nivel_1', 'bacias_nivel_2', 
+                        choices=['biomas', 'car_biomas', 'bacias.nivel.1', 'bacias.nivel.2', 
                         'municipios_estado_pais', 'car_municipios', 'all'])
 
     parser.add_argument('dir_geojson', type=str,  help='the geojson folder')
@@ -46,6 +105,15 @@ def interface():
 
     if layer == "biomas":
         biomas(dir_geojson, transition_years)
+
+    if layer == "bacias.nivel.1":
+        bacias_nivel_1(dir_geojson, transition_years)
+    
+    if layer == "bacias.nivel.2":
+        bacias_nivel_2(dir_geojson, transition_years)
+
+    if layer == 'all':
+        all_layers(dir_geojson, transition_years)
 
 if __name__ == "__main__":
     interface()

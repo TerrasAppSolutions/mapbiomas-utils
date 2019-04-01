@@ -31,3 +31,9 @@ gsutil -m cp -r  gs://mapbiomas-dev-storage/ESTATISTICA_GEE/COLECAO3_1/CAR/COBER
 ```sh
 gsutil -m cp -r  gs://mapbiomas-dev-storage/ESTATISTICA_GEE/COLECAO3_1/BIOMAS/TRANSICAOV2/*.geojson  BIOMAS/TRANSICAO/
 ```
+
+- Upload all
+
+```sh
+gsutil -m cp -R  gs://mapbiomas-dev-storage/ESTATISTICA_GEE/COLECAO3_1 .  
+```
