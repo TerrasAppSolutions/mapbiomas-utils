@@ -66,6 +66,7 @@ def municipios(path_folder, transition_years):
 
 def all_layers(path_folder, transition_years):
     for years_pair in transition_years:
+        print(years_pair)
 
         path_json = get_path_json(path_folder, years_pair, 'biomas')
         send_to_postgres(path_json)
