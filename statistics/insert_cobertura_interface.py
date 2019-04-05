@@ -20,7 +20,7 @@ def send_to_postgres_municipios(path_json, idprefix = 0):
 
 def get_path_json(path_folder, year, filter_layer):
 
-    print((filter_layer, year) )
+    print((filter_layer, year))
     json_path = insert_cobertura_postgres.get_cobertura_meta(path_folder,
     filter_layer, str(year))[0]['json_path']
     return json_path
@@ -106,30 +106,36 @@ def unidade_de_conservacao(path_folder, years):
 
 def all_layers(path_folder, years):
     for year in years:
-        print(year)
-
-        path_json = get_path_json(path_folder, year, 'biomas')
+        filter_layer = 'biomas'      
+        path_json = get_path_json(path_folder, year, filter_layer)
         send_to_postgres(path_json)
 
-        path_json = get_path_json(path_folder, year, 'bacias.nivel.1')
+        filter_layer = 'bacias.nivel.1'
+        path_json = get_path_json(path_folder, year, filter_layer)
         send_to_postgres(path_json, idprefix=7000000)
 
-        path_json = get_path_json(path_folder, year, 'bacias.nivel.2')
+        filter_layer = 'bacias.nivel.2'
+        path_json = get_path_json(path_folder, year, filter_layer)
         send_to_postgres(path_json, idprefix=7100000)
 
-        path_json = get_path_json(path_folder, year, 'municipios')
+        filter_layer = 'municipios'
+        path_json = get_path_json(path_folder, year, filter_layer)
         send_to_postgres_municipios(path_json)
 
-        path_json = get_path_json(path_folder, year, 'ti')
+        filter_layer = 'ti'
+        path_json = get_path_json(path_folder, year, filter_layer)
         send_to_postgres(path_json, idprefix=6000000)
 
-        path_json = get_path_json(path_folder, year, 'uc')
+        filter_layer = 'uc'
+        path_json = get_path_json(path_folder, year, filter_layer)
         send_to_postgres(path_json, idprefix=6000000)
 
-        path_json = get_path_json(path_folder, year, 'car.biomas')
+        filter_layer = 'car.biomas'
+        path_json = get_path_json(path_folder, year, filter_layer)
         send_to_postgres(path_json, idprefix=10000000)
 
-        path_json = get_path_json(path_folder, year, 'car.municipios')
+        filter_layer = 'car.municipios'
+        path_json = get_path_json(path_folder, year, filter_layer)
         send_to_postgres(path_json, idprefix=10000000)
 
 
