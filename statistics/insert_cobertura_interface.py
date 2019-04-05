@@ -21,7 +21,7 @@ def send_to_postgres_municipios(path_json, idprefix = 0):
 def get_path_json(path_folder, year, filter_layer):
 
     json_path = insert_cobertura_postgres.get_cobertura_meta(path_folder,
-    filter_layer, str(year))
+    filter_layer, str(year))[0]['json_path']
     return json_path
 
 def send_to_postgres(path_json, idprefix = 0):
