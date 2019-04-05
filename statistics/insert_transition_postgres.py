@@ -47,7 +47,7 @@ def get_all_geojsons_paths(path_folder):
     return geojsons_paths
 
 def get_transitions_meta(path_folder, filter_layer=None, year1=None, year2=None):
-
+    
     result = []
     for json_path in get_all_geojsons_paths(path_folder):
         json_name = json_path.split('/')[-1]
@@ -65,7 +65,7 @@ def get_transitions_meta(path_folder, filter_layer=None, year1=None, year2=None)
     if filter_layer:
         result = [meta for meta in result if meta["layer_name"] == filter_layer]
 
-    if year1 == None and year2 == None:
+    if year1 != None and year2 != None:
         result = [meta for meta in result if meta["year1"] == year1]
         result = [meta for meta in result if meta["year2"] == year2]
 

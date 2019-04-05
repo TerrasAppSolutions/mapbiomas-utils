@@ -29,40 +29,55 @@ def get_path_json(path_folder, years_pair, filter_layer):
     return json_path
 
 def biomas(path_folder, transition_years):
-    for years_pair in transition_years:
-        filter_layer = 'biomas'
-        path_json = get_path_json(path_folder, years_pair, filter_layer)
-        send_to_postgres(path_json)
-
-def areas_protegidas(path_folder, transition_years):
-    for years_pair in transition_years:
-        filter_layer = 'areas.protegidas'
+    filter_layer = 'biomas'
+    for years_pair in transition_years:        
         path_json = get_path_json(path_folder, years_pair, filter_layer)
         send_to_postgres(path_json)
 
 def bacias_nivel_1(path_folder, transition_years):
 
     idprefix = 7000000
+    filter_layer = 'bacias.nivel.1'
 
-    for years_pair in transition_years:
-        filter_layer = 'bacias.nivel.1'
+    for years_pair in transition_years:        
         path_json = get_path_json(path_folder, years_pair, filter_layer)
         send_to_postgres(path_json,  idprefix)
 
 def bacias_nivel_2(path_folder, transition_years):
 
     idprefix = 7100000
+    filter_layer = 'bacias.nivel.2'
 
-    for years_pair in transition_years:
-        filter_layer = 'bacias.nivel.2'
+    for years_pair in transition_years:        
         path_json = get_path_json(path_folder, years_pair, filter_layer)
         send_to_postgres(path_json,  idprefix)
 
 def municipios(path_folder, transition_years):
+
+    filter_layer = 'municipios'
+
     for years_pair in transition_years:
-        filter_layer = 'municipios'
+        
         path_json = get_path_json(path_folder, years_pair, filter_layer)
         send_to_postgres_municipios(path_json)
+
+def terra_indigena(path_folder, transition_years):
+    
+    idprefix = 6000000
+    filter_layer = 'ti'
+
+    for years_pair in transition_years:        
+        path_json = get_path_json(path_folder, years_pair, filter_layer)
+        send_to_postgres(path_json,  idprefix)
+
+def unidade_de_conservacao(path_folder, transition_years):
+    
+    idprefix = 6000000
+    filter_layer = 'uc'
+
+    for years_pair in transition_years:        
+        path_json = get_path_json(path_folder, years_pair, filter_layer)
+        send_to_postgres(path_json,  idprefix)
 
 def all_layers(path_folder, transition_years):
     for years_pair in transition_years:
@@ -72,14 +87,25 @@ def all_layers(path_folder, transition_years):
         send_to_postgres(path_json)
 
         path_json = get_path_json(path_folder, years_pair, 'bacias.nivel.1')
-        send_to_postgres(path_json)
+        send_to_postgres(path_json, idprefix=7000000)
 
         path_json = get_path_json(path_folder, years_pair, 'bacias.nivel.2')
-        send_to_postgres(path_json)
+        send_to_postgres(path_json, idprefix=7100000)
 
         path_json = get_path_json(path_folder, years_pair, 'municipios')
         send_to_postgres_municipios(path_json)
 
+        path_json = get_path_json(path_folder, years_pair, 'ti')
+        send_to_postgres(path_json, idprefix=6000000)
+
+        path_json = get_path_json(path_folder, years_pair, 'uc')
+        send_to_postgres(path_json, idprefix=6000000)
+
+        path_json = get_path_json(path_folder, years_pair, 'car.biomas')
+        send_to_postgres(path_json, idprefix=10000000)
+
+        path_json = get_path_json(path_folder, years_pair, 'car.municipios')
+        send_to_postgres(path_json, idprefix=10000000)
 
 def interface():
 
