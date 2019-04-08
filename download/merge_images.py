@@ -50,3 +50,6 @@ def interface():
     execute(raster_name, folder_path, folder_vrt)
     
 
+
+if __name__ == "__main__":
+    interface()
