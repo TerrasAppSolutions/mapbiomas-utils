@@ -4,7 +4,6 @@ import argparse
 
 def ovr_integracao(pathInput, part):
 
-
     if part == 'all':
         years = map(lambda year: str(year) , range(1985, 2018))
 
@@ -39,7 +38,6 @@ def ovr_integracao(pathInput, part):
             os.system(osCommand)
 
 def ovr_transicao(pathInput, part):
-
 
     if part == 'all':
         transition_years = [ u'1985_1986', u'1986_1987', u'1987_1988', u'1988_1989', u'1989_1990', u'1990_1991',
