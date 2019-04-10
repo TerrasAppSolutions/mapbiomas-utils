@@ -78,7 +78,7 @@ def ovr_transicao(pathInput, part):
                 process_start = True
 
         if process_start:
-            osCommand = "gdaladdo -r mode --config COMPRESS_OVERVIEW LZW --config GDAL_CACHEMAX 2000 " + vrt + " 2 4 8 16"
+            osCommand = "gdaladdo -r mode --config COMPRESS_OVERVIEW LZW --config GDAL_CACHEMAX 4000 " + vrt + " 2 4 8 16"
             print(osCommand)
             os.system(osCommand)
 
