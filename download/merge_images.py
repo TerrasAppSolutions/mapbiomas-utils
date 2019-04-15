@@ -10,7 +10,7 @@ def buildvrt(folder_path, folder_vrt, biome):
     os.system(osCommand)
 
 def merge_images(folder_path, biome):
-    osCommand = 'gdal_translate -of GTiff -co "COMPRESS=LZW" ' + folder_path + "/" + biome + ".vrt " + folder_path + "/" + biome + ".tif"
+    osCommand = 'gdal_translate -of GTiff -co BIGTIFF=YES -co "COMPRESS=LZW" ' + folder_path + "/" + biome + ".vrt " + folder_path + "/" + biome + ".tif"
     os.system(osCommand)
 
 def execute(raster_name, folder_path, folder_vrt):
@@ -32,12 +32,19 @@ def execute(raster_name, folder_path, folder_vrt):
             print('executing merge', name)
             merge_images(folder_vrt, name)
 
+    else:
+        print('executing vrt', raster_name)
+        buildvrt(folder_path, folder_vrt, raster_name)
+        print('executing merge', raster_name)
+        merge_images(folder_vrt, raster_name)
+
+
 def interface():
     parser = argparse.ArgumentParser(description='Merge the images for download')
 
     parser.add_argument('name', type=str, help='choose the raster name', 
                         choices=['AMAZONIA', 'CAATINGA', 'CERRADO', 'MATAATLANTICA', 
-                        'PAMPA', 'PANTANAL', 'all']) #TODO only 'all' works 
+                        'PAMPA', 'PANTANAL', 'all']) 
 
     parser.add_argument('folder_path', type=str,  help='choose the raster folder')
 
