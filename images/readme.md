@@ -24,3 +24,7 @@ python buildvrt_util.py transicao "/mnt/disks/data/data2/collections/COLECAO3_1/
 python buildovr_util.py integracao  "/mnt/disks/data/data2/collections/COLECAO3_1/VRT/INTEGRACAO" 1 &
 python buildovr_util.py integracao  "/mnt/disks/data/data2/collections/COLECAO3_1/VRT/INTEGRACAO" 2 &
 ```
+
+```sh
+gdalwarp -co COMPRESS=LZW -r mode -tr 0.0010425 0.0010425 CERRADO.tif CERRADO_100m_v1.tif
+```
