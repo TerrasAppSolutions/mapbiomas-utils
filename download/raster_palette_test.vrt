@@ -1,0 +1,92 @@
+<VRTDataset rasterXSize="8934" rasterYSize="7722">
+  <SRS>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433],AUTHORITY["EPSG","4326"]]</SRS>
+  <GeoTransform> -5.8467928245260005e+01,  1.0425000000000000e-03,  0.0000000000000000e+00, -2.5749129640945142e+01,  0.0000000000000000e+00, -1.0425000000000000e-03</GeoTransform>
+  <VRTRasterBand dataType="Byte" band="1">
+    <Metadata>
+      <MDI key="STATISTICS_MAXIMUM">33</MDI>
+      <MDI key="STATISTICS_MEAN">3.3457728712179</MDI>
+      <MDI key="STATISTICS_MINIMUM">0</MDI>
+      <MDI key="STATISTICS_STDDEV">7.2233527945081</MDI>
+    </Metadata>
+    <ColorInterp>Palette</ColorInterp>
+      <ColorTable>
+        <Entry c1="0"	c2="0" c3="0"  c4="0"/>
+        <Entry c1="18"	c2="153" c3="18"  c4="255"/>
+        <Entry c1="31"	c2="68"	 c3="35"  c4="255"/>
+        <Entry c1="0"	c2="100" c3="0"     c4="255"/>
+        <Entry c1="50"	c2="205" c3="50"  c4="255"/>
+        <Entry c1="104"	c2="117" c3="55"  c4="255"/>
+        <Entry c1="118"	c2="165" c3="175" c4="255"/>
+        <Entry c1="41"	c2="238" c3="228" c4="255"/>
+        <Entry c1="119"	c2="166" c3="5"   c4="255"/>
+        <Entry c1="147"	c2="81"	 c3="50"  c4="255"/>
+        <Entry c1="187"	c2="252" c3="172" c4="255"/>
+        <Entry c1="69"	c2="194" c3="165" c4="255"/>
+        <Entry c1="184"	c2="175" c3="79"  c4="255"/>
+        <Entry c1="189"	c2="183" c3="107" c4="255"/>
+        <Entry c1="255"	c2="255" c3="178" c4="255"/>
+        <Entry c1="255"	c2="217" c3="102" c4="255"/>
+        <Entry c1="246"	c2="178" c3="107" c4="255"/>
+        <Entry c1="249"	c2="159" c3="64"  c4="255"/>
+        <Entry c1="233"	c2="116" c3="237" c4="255"/>
+        <Entry c1="213"	c2="166" c3="189" c4="255"/>
+        <Entry c1="194"	c2="123" c3="160" c4="255"/>
+        <Entry c1="255"	c2="239" c3="195" c4="255"/>
+        <Entry c1="234"	c2="153" c3="153" c4="255"/>
+        <Entry c1="221"	c2="126" c3="107" c4="255"/>
+        <Entry c1="175"	c2="42"	 c3="42"  c4="255"/>
+        <Entry c1="255"	c2="153" c3="255" c4="255"/>
+        <Entry c1="0"	  c2="0"   c3="255" c4="255"/>
+        <Entry c1="213"	c2="213" c3="229" c4="255"/>
+        <Entry c1="221"	c2="73"	 c3="127" c4="255"/>
+        <Entry c1="255"	c2="140" c3="0"   c4="255"/>
+        <Entry c1="138"	c2="43"	 c3="226" c4="255"/>
+        <Entry c1="41"	c2="238" c3="228" c4="255"/>
+        <Entry c1="150"	c2="140" c3="70"  c4="255"/>
+        <Entry c1="0"	  c2="0"	 c3="255" c4="255"/>
+      </ColorTable>
+    <CategoryNames>
+      <Category>0  - Nodata</Category>
+      <Category>1  - Floresta</Category>
+      <Category>2  - Floresta Natural</Category>
+      <Category>3  - Formação Florestal</Category>
+      <Category>4  - Formação Savânica</Category>
+      <Category>5  - Mangue</Category>
+      <Category>6  - Floresta Alagada</Category>
+      <Category>7  - Floresta Degradada</Category>
+      <Category>8  - Floresta Secundária</Category>
+      <Category>9  - Floresta Plantada</Category>
+      <Category>10 - Formação Natural não Florestal</Category>
+      <Category>11 - Área Úmida Natural não Florestal</Category>
+      <Category>12 - Formação Campestre</Category>
+      <Category>13 - Outra Formação não Florestal</Category>
+      <Category>14 - Agropecuária</Category>
+      <Category>15 - Pastagem</Category>
+      <Category>16 - Pastagem em Campos Naturais</Category>
+      <Category>17 - Outras Pastagens</Category>
+      <Category>18 - Agricultura</Category>
+      <Category>19 - Cultura Anual e Perene</Category>
+      <Category>20 - Cultura Semi-Perene</Category>
+      <Category>21 - Mosaico de Agricultura e Pastagem</Category>
+      <Category>22 - Área não Vegetada</Category>
+      <Category>23 - Praia e Duna</Category>
+      <Category>24 - Infraestrutura Urbana</Category>
+      <Category>25 - Outra Área não Vegetada</Category>
+      <Category>26 - Corpo D'água</Category>
+      <Category>27 - Não Observado</Category>
+      <Category>28 - Mosaico de Cultivos</Category>
+      <Category>29 - Afloramento Rochoso</Category>
+      <Category>30 - Mineração</Category>
+      <Category>31 - Aquicultura</Category>
+      <Category>32 - Apicum</Category>
+      <Category>33 - Rio, Lago e Oceano</Category>
+    </CategoryNames>
+    <SimpleSource>
+      <SourceFilename relativeToVRT="1" shared="0">COLECAO_3_CONSOLIDACAO_PAMPA_100m_v1.tif</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="8934" RasterYSize="7722" DataType="Byte" BlockXSize="8934" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="8934" ySize="7722" />
+      <DstRect xOff="0" yOff="0" xSize="8934" ySize="7722" />
+    </SimpleSource>
+  </VRTRasterBand>
+</VRTDataset>
