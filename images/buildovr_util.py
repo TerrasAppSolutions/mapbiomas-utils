@@ -31,7 +31,7 @@ def ovr_integracao(pathInput, part):
 
                 process_start = True
 
-        osCommand = "gdaladdo -r mode --config COMPRESS_OVERVIEW LZW  " + vrt + " 2 4 8 16"
+        osCommand = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBIT --config GDAL_CACHEMAX 2000 " + vrt + " 2 4 8 16"
 
         if process_start:
             print(osCommand)
