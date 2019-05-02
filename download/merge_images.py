@@ -8,7 +8,7 @@ def get_list_names_raster():
 
 def buildvrt(folder_path, folder_vrt, biome):
     
-    osCommand = "gdalbuildvrt  " + folder_vrt + "/" + biome + ".vrt "   + folder_path + "/" + biome + "*"
+    osCommand = "gdalbuildvrt  " + folder_vrt + "/" + biome + ".vrt "   + folder_path + "/*" + biome + "*.tif"
     os.system(osCommand)
 
 def hex_to_rgb(hex):
@@ -34,7 +34,7 @@ def process_csv(csv_file):
     tags = "<ColorTable>\\\n" + colors + "</ColorTable>\\\n<CategoryNames>\\\n" + categories + "</CategoryNames>"
     return tags
 
-def add_colors_categories(folder_vrt, csv_file, biome):
+def add_colors_categories(folder_vrt, csv_file):
     changeColorInterpretation = "sed -i 's/Gray/Palette/g' " + folder_vrt + "/*.vrt"
     os.system(changeColorInterpretation)
 
@@ -62,6 +62,9 @@ def execute(raster_name, folder_path, folder_vrt, csv_file):
             print('executing vrt', name)
             buildvrt(folder_path, folder_vrt, name)
 
+        #add color table
+        add_colors_categories(folder_vrt, csv_file)
+
         #execute merge
         for name in names:
             print('executing merge', name)
@@ -71,7 +74,7 @@ def execute(raster_name, folder_path, folder_vrt, csv_file):
         print('executing vrt', raster_name)
         buildvrt(folder_path, folder_vrt, raster_name)
         print('executing merge', raster_name)
-        add_colors_categories(folder_vrt, csv_file, raster_name)
+        add_colors_categories(folder_vrt, csv_file)
         merge_images(folder_vrt, raster_name)
 
 
@@ -86,12 +89,10 @@ def interface():
 
     parser.add_argument('folder_vrt', type=str,  help='choose the vrt folder')
 
-    parser.add_argument('csv_file', type=str,  help='choose the csv file')
-
     raster_name = parser.parse_args().name
     folder_vrt = parser.parse_args().folder_vrt
     folder_path = parser.parse_args().folder_path
-    csv_file = parser.parse_args().csv_file
+    csv_file = "legendas.csv"
 
     execute(raster_name, folder_path, folder_vrt, csv_file)
     
