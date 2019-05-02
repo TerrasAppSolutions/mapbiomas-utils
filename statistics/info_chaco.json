@@ -1,0 +1,21 @@
+{
+
+"layers":[
+        {
+            "layer":"paises", 
+            "type":"single",       
+            "prefix":100000
+        },{
+            "layer":"departamentos.estados", 
+            "type":"single",       
+            "prefix":200000
+        },{
+            "layer":"provincias.municipios", 
+            "type":"single",     
+            "prefix":300000    
+        }
+    ],
+"years":[2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017],
+"transition_years":["2010_2011","2011_2012","2012_2013","2013_2014","2014_2015","2015_2016","2016_2017","2010_2017","2013_2017"]
+
+}

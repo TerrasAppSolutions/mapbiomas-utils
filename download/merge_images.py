@@ -10,6 +10,8 @@ def buildvrt(folder_path, folder_vrt, biome):
     osCommand = "gdalbuildvrt  " + folder_vrt + "/" + biome + ".vrt "   + folder_path + "/" + biome + "*"
     os.system(osCommand)
 
+def add_colors_legend(folder_path, biome):
+
 def merge_images(folder_path, biome):
     #TODO change gdal translate example: gdal_translate -of GTiff -a_nodata 0 -co "TILED=YES" -co BLOCKXSIZE=256 -co BLOCKYSIZE=256 -co BIGTIFF=YES -co COMPRESS=LZW CERRADO.vrt CERRADO2.tif
     osCommand = 'gdal_translate -of GTiff -a_nodata 0 -co BIGTIFF=YES -co "COMPRESS=LZW" ' + folder_path + "/" + biome + ".vrt " + folder_path + "/" + biome + ".tif"
@@ -38,6 +40,7 @@ def execute(raster_name, folder_path, folder_vrt):
         print('executing vrt', raster_name)
         buildvrt(folder_path, folder_vrt, raster_name)
         print('executing merge', raster_name)
+        #TODO add script that will create legend and colors
         merge_images(folder_vrt, raster_name)
 
 
