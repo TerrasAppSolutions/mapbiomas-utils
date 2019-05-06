@@ -20,17 +20,17 @@ def hex_to_rgb(hex):
 def process_csv(csv_file):
     categories = "<Category>0  - Nodata<\/Category>\\\n"
     colors = "<Entry c1=\"0\"	c2=\"0\" c3=\"0\"  c4=\"0\"/>\\\n"
-    columns = ["id","classe","cor","parente","ref","versao","valor","valor_l1","valor_l2","valor_l3","ativo"]
-    data = pandas.read_csv(open(csv_file), names = columns)
+    data = pandas.read_csv(open(csv_file))
+    data = data.sort_values(by=['valor'])
     identifier = data.valor.tolist()
     colors_hexadecimal = data.cor.tolist()
     classes = data.classe.tolist()    
-    for i in range(1, len(colors_hexadecimal)):
+    for i in range(0, len(colors_hexadecimal)):
         rgb = hex_to_rgb(colors_hexadecimal[i]) 
         colors= colors + "<Entry c1=\"" + rgb[0]+ "\" c2=\"" + rgb[1] + "\" c3=\"" + rgb[2] + "\" c4=\"255\"/>\\\n"
-    for i in range(1, len(identifier)):
+    for i in range(0, len(identifier)):
         classes[i] = classes[i].replace("'","\\x27")
-        categories = categories + "<Category>" + identifier[i] + " - " + classes[i] + "</Category>\\\n"
+        categories = categories + "<Category>" + str(identifier[i]) + " - " + classes[i] + "</Category>\\\n"
     tags = "<ColorTable>\\\n" + colors + "</ColorTable>\\\n<CategoryNames>\\\n" + categories + "</CategoryNames>"
     return tags
 
