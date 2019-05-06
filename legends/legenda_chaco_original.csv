@@ -1,0 +1,12 @@
+COR,RGB,Active,COD,Level,Parent,Ref,Legend
+#129912,"18,153,18",1,1,1,0,1.,Vegetación Natural Terrestre
+#1f4423,"31,68,35",1,2,2,1,1.0.,Vegetación Leñosa
+#935132,"147,81,50",1,9,2,14,2.0.,Plantaciones Forestales
+#b8af4f,"184,175,79",1,12,2,1,1.1.,Vegetación Herbáceas
+#F1C232,"241,194,50",1,13,2,1,1.2.,Vegetación dispersa
+#FFFFB2,"255,255,178",0,14,1,0,2.,Áreas Agropecuarias y Forestales
+#FFD966,"255,217,102",1,15,2,14,2.1.,Pastura
+#E974ED,"233,116,237",1,18,2,14,2.2.,Cultivos Agrícolas
+#d0670f,"234,153,153",1,22,1,0,3.,Áreas No Vegetadas
+#0022F6,"0,34,246",1,26,1,0,4.,Cuerpos de Agua
+#D5D5E5,"213,213,229",1,27,1,0,5.,No Observado

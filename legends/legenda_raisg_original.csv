@@ -1,0 +1,36 @@
+;COR;RGB;Ativo;COD;Nivel;Parent;Ref;LEYENDA CONSOLIDADA PLURAL;LEYENDA CONSOLIDADA SINGULAR;LEGEND
+;#129912;18,153,18;1;1;1;0;1.;Formaciones Forestales;Formación Forestal;Forest
+;#1F4423;31,68,35;0;2;2;1;1.0.;Bosques Naturales;Bosque Natural;Natural Forest
+;#006400;0,100,0;1;3;2;1;1.1.;Bosques / Formaciones Forestales;Bosque / Formación Forestal;Forest Formation
+;#00FF00;0,255,0;1;4;2;1;1.2.;Bosques Abiertos / Formaciones Sabánicas;Bosque Abierto / Formación Sabánica;Savanna Formation
+;#687537;104,117,55;1;5;2;1;1.3.;Manglares;Manglar;Mangrove
+;#76A5AF;118,165,175;1;6;2;1;1.4.;Bosques Inundables;Bosque Inundable;Flooded forest
+;#29EEE4;41,238,228;0;7;2;1;1.5.;Bosques Degradados;Bosque Degradado;Degraded forest
+;#77A605;119,166,5;0;8;2;1;1.6.;Bosques Secundarios;Bosque Secundario;Secondary forest
+;#935132;147,81,50;0;9;2;1;1.7.;Plantaciones Forestales;Plantación Forestal;Forest Plantation
+;#FF9966;255,153,102;1;10;1;0;2.;Formaciones Naturales No Forestales;Formación Natural No Forestal;Non Forest Natural Formation
+;#45C2A5;69,194,165;1;11;2;10;2.1.;Formaciones Naturales No Forestales Inundables;Formación Natural No Forestal Inundable;Wetland
+;#B8AF4F;184,175,79;1;12;2;10;2.2.;Formaciones Campestres;Formacion Campestre;Grassland
+;#ffffff;255,255,255;0;;2;10;2.4.;Arbustales terrestres (no inundables);Arbustal inundable (no inundable);
+;#fa7223;250,114,35;1;32;2;10;2.3.;Apicum;Apicum;Salt flat
+;#F1C232;241,194,50;1;13;2;10;2.4.;Otras Formaciones No Forestales;Otra Formacion No Forestal;Other non forest natural formation
+;#FFFFB2;255,255,178;1;14;1;0;3.;Uso Agropecuario;Uso Agropecuario;3. Farming
+;#FFD966;255,217,102;0;15;2;14;3.1.;Pastos;Pasto;Pasture
+;#F6B26B;246,178,107;0;16;3;15;3.1.1.;Pastos en Campos Naturales;Pasto en Campo Natural;Pasture in grasslands
+;#A0D0DE;160,208,222;0;17;3;15;3.1.2.;Otros Pastos;Otro Pasto;Other pasture
+;#E974ED;233,116,237;0;18;2;14;3.2.;Agricultura;Agricultura;Agriculture
+;#D5A6BD;213,166,189;0;19;3;18;3.2.1.;Agricultura Anual y Permanente;Agricultura Anual y Permanente;Annual and Perennial Crop
+;#C27BA0;194,123,160;0;20;3;18;3.2.2.;Agricultura Semi-Permanente;Agricultura Semi-Permanente;Semi-perennial Crop
+;#CE3D3D;206,61,61;0;28;3;18;3.2.3.;Mosaicos de Cultivos;Mosaico de Cultivos;Mosaic of crops
+;#FFEFC3;255,239,195;0;21;2;14;3.3.;Mosaicos de Agricultura y/o Pastos;Mosaico de Agricultura y/o Pasto;Mosaic of Agriculture and/or Pasture
+;#EA9999;234,153,153;1;22;1;0;4.;Áreas sin vegetación;Áreas sin vegetación;Non vegetated area
+;#DD7E6B;221,126,107;0;23;2;22;4.1.;Playas y Dunas;Playa y Duna;Beach and Dune
+;#FF99FF;183,183,183;0;24;2;22;4.2.;Infraestructuras Urbanas;Infraestructura Urbana;Urban Infrastructure
+;#B7B7B7;255,153,255;0;25;2;22;4.3.;Otras Áreas sin vegetación;Otra Área No Vegetada;Other non vegetated area
+;#FF8C00;255,140,0;0;29;2;22;4.5.;Afloramientos Rocosos;Afloramiento Rocoso;Rocky outcrop
+;#8A2BE2;138,43,226;0;30;2;22;4.4.;Minería;Minería;Mining
+;#0022F6;0,34,246;1;26;1;0;5.;Cuerpos de agua;Cuerpos de agua;Water
+;#0000FF;0,0,255;1;33;2;26;5.1.;Ríos, Lagos y Océanos;Río, Lago y Océano;River, Lake and Ocean
+;#29EEE4;41,238,228;1;31;2;26;5.2.;Acuicultura;Acuicultura;Aquaculture
+;#FFFFFF;255,255,255;1;34;2;26;5.3.;Glaciares;Glaciar;Glacier
+;#D5D5E5;213,213,229;1;27;1;0;6.;No Observado;No Observado;Non Observed
