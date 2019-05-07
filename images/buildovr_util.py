@@ -1,25 +1,24 @@
 import os
 import re
 import argparse
+import json
 
-def ovr_integracao(pathInput, part):
+def get_info_project(project_name):
+    if project_name == 'chaco':
+       data = json.load(open('info_chaco.json')) 
+    else:
+        raise Exception('this project name doesnt exist')
+    return data
 
-    if part == 'all':
-        years = map(lambda year: str(year) , range(1985, 2018))
+def ovr_integracao(path_input, part, info_project):
 
-    if part == '1':
-        years = map(lambda year: str(year) , range(1985, 1990))
 
-    if part == '2':
-        years = map(lambda year: str(year) , range(1990, 2000))
+    year1 = info_project["ovr_integracao"][part][0]
+    year2 = info_project["ovr_integracao"][part][1]
 
-    if part == '3':
-        years = map(lambda year: str(year) , range(2000, 2010))
+    years = [str(year) for year in range(year1, year2)]
 
-    if part == '4':
-        years = map(lambda year: str(year) , range(2010, 2018))
-
-    files = [pathInput + "/" + f for f in os.listdir(pathInput) if f.endswith(".vrt")]
+    files = [path_input + "/" + f for f in os.listdir(path_input) if f.endswith(".vrt")]
 
     for vrt in files:
 
@@ -31,11 +30,11 @@ def ovr_integracao(pathInput, part):
 
                 process_start = True
 
-        osCommand = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBITS --config GDAL_CACHEMAX 2000 " + vrt + " 2 4 8 16"
+        os_command = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBITS --config GDAL_CACHEMAX 2000 " + vrt + " 2 4 8 16"
 
         if process_start:
-            print(osCommand)
-            os.system(osCommand)
+            print(os_command)
+            os.system(os_command)
 
 def ovr_transicao(pathInput, part):
 
@@ -99,6 +98,8 @@ def interface():
 
     parser = argparse.ArgumentParser(description='Create OVR (Overview) files')
 
+    parser.add_argument('project', type=str, help='write the project name', choices=['brasil', 'chaco', 'raisg'])
+
     parser.add_argument('colecao', type=str, default='integracao', help='choose which collection', 
                     choices=['integracao', 'transicao', 'rgb'])
 
@@ -108,13 +109,15 @@ def interface():
                         choices=['1','2','3','4', 'all'])
 
     
-    
+    project = parser.parse_args().project
     colecao = parser.parse_args().colecao
     path_input = parser.parse_args().dir_src
     part = parser.parse_args().part
 
+    info_project = get_info_project(project)
+
     if colecao == "integracao":
-        ovr_integracao(path_input, str(part))
+        ovr_integracao(path_input, str(part), info_project)
 
     if colecao == "transicao":
         ovr_transicao(path_input, str(part))
