@@ -24,8 +24,7 @@ def format_legends(path):
             "ativo":bool(item["Active"])
         })  
 
-    for item in data: 
-        
+    for item in data:         
         if item['parente'] == 0:
             item['valor_l2'] = item['valor_l3']        
             item['valor_l1'] = item['valor_l3']
