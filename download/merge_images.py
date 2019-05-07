@@ -15,6 +15,7 @@ def hex_to_rgb(hex):
     r = str(int(hex[1:3],16))
     g = str(int(hex[3:5],16))
     b = str(int(hex[5:7],16))
+    
     return tuple([r,g,b])
 
 def process_csv(csv_file):
@@ -25,13 +26,17 @@ def process_csv(csv_file):
     identifier = data.valor.tolist()
     colors_hexadecimal = data.cor.tolist()
     classes = data.classe.tolist()    
+    
     for i in range(0, len(colors_hexadecimal)):
         rgb = hex_to_rgb(colors_hexadecimal[i]) 
         colors= colors + "<Entry c1=\"" + rgb[0]+ "\" c2=\"" + rgb[1] + "\" c3=\"" + rgb[2] + "\" c4=\"255\"/>\\\n"
+    
     for i in range(0, len(identifier)):
         classes[i] = classes[i].replace("'","\\x27")
         categories = categories + "<Category>" + str(identifier[i]) + " - " + classes[i] + "</Category>\\\n"
+    
     tags = "<ColorTable>\\\n" + colors + "</ColorTable>\\\n<CategoryNames>\\\n" + categories + "</CategoryNames>"
+    
     return tags
 
 def add_colors_categories(folder_vrt, csv_file):
@@ -40,7 +45,6 @@ def add_colors_categories(folder_vrt, csv_file):
 
     addTags =   "sed -i '/Palette/a\\" + process_csv(csv_file) + "' " + folder_vrt + "/*.vrt"
     os.system(addTags)
-    
 
 
 def merge_images(folder_path, biome):
