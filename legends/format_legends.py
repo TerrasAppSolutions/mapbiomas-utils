@@ -1,7 +1,9 @@
 import pandas as pd
+import psycopg2
+import psycopg2.extras
+import config
 
-
-def format_legends(path)
+def format_legends(path):
     df = pd.read_csv(path, sep=",")
     df.dropna(inplace=True, subset=['COD', 'Parent', 'COR'])
 
@@ -36,10 +38,16 @@ def format_legends(path)
     return data
 
 def upload_to_postgres(data):
-    conn = psycopg2.connect("dbname='mapbiomas' user='postgres' host='localhost' port='5432' password='postgres'")
+    conn = psycopg2.connect(database=config.postgres_db, 
+    user=config.postgres_user, 
+    password=config.postgres_password,
+    host=config.postgres_host,
+    port=config.postgres_port
+    )
+
     cur = conn.cursor()
 
-    sqlinsert = """INSERT INTO classes (classe,cor,parente,ref,versao,valor,valor_l1,valor_l2,valor_l3,ativo, classe_singular, classe_ingles)
+    sqlinsert = """INSERT INTO classes (classe,cor,parente,ref,versao,valor,valor_l1,valor_l2,valor_l3,ativo)
                 VALUES %s"""
 
     datainsert = [(a['classe'], a['cor'], a['parente'], a['ref'], a['versao'], a['valor'], a['valor_l1'], a['valor_l2'], a['valor_l3'], a['ativo'])
@@ -54,5 +62,10 @@ def upload_to_postgres(data):
     conn.commit()
     conn.close()
 
+
+
 data = format_legends("./legenda_chaco_original.csv")
+import pprint
+# pprint.pprint(data)
+upload_to_postgres(data)
 

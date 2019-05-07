@@ -21,49 +21,14 @@ CLASS
 END
 
 CLASS
-  EXPRESSION ([pixel] = 9 AND !("9" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  EXPRESSION ([pixel] = 12 AND !("12" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
   STYLE 
     COLOR "#129912"
   END
 END
-    
+
 CLASS
-  EXPRESSION ([pixel] = 3 AND !("2" IN '%classification_ids%') AND !("3" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#129912"
-  END
-END
-    
-CLASS
-  EXPRESSION ([pixel] = 4 AND !("2" IN '%classification_ids%') AND !("4" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#129912"
-  END
-END
-    
-CLASS
-  EXPRESSION ([pixel] = 5 AND !("2" IN '%classification_ids%') AND !("5" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#129912"
-  END
-END
-    
-CLASS
-  EXPRESSION ([pixel] = 6 AND !("2" IN '%classification_ids%') AND !("6" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#129912"
-  END
-END
-    
-CLASS
-  EXPRESSION ([pixel] = 7 AND !("2" IN '%classification_ids%') AND !("7" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#129912"
-  END
-END
-    
-CLASS
-  EXPRESSION ([pixel] = 8 AND !("2" IN '%classification_ids%') AND !("8" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  EXPRESSION ([pixel] = 13 AND !("13" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
   STYLE 
     COLOR "#129912"
   END
@@ -78,127 +43,7 @@ END
 CLASS
   EXPRESSION ([pixel] = 2 AND "2" IN '%classification_ids%')
   STYLE 
-    COLOR "#1F4423"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 3 AND !("3" IN '%classification_ids%') AND ("2" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#1F4423"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 4 AND !("4" IN '%classification_ids%') AND ("2" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#1F4423"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 5 AND !("5" IN '%classification_ids%') AND ("2" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#1F4423"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 6 AND !("6" IN '%classification_ids%') AND ("2" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#1F4423"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 7 AND !("7" IN '%classification_ids%') AND ("2" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#1F4423"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 8 AND !("8" IN '%classification_ids%') AND ("2" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#1F4423"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 3 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 3 AND "3" IN '%classification_ids%')
-  STYLE 
-    COLOR "#006400"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 4 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 4 AND "4" IN '%classification_ids%')
-  STYLE 
-    COLOR "#32CD32"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 5 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 5 AND "5" IN '%classification_ids%')
-  STYLE 
-    COLOR "#687537"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 6 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 6 AND "6" IN '%classification_ids%')
-  STYLE 
-    COLOR "#76A5AF"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 7 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 7 AND "7" IN '%classification_ids%')
-  STYLE 
-    COLOR "#29EEE4"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 8 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 8 AND "8" IN '%classification_ids%')
-  STYLE 
-    COLOR "#77A605"
+    COLOR "#1f4423"
   END
 END
 
@@ -217,60 +62,6 @@ END
 
 
     ##########################
-    ##    CLASSE 10 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 10 AND "10" IN '%classification_ids%')
-  STYLE 
-    COLOR "#BBFCAC"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 11 AND !("11" IN '%classification_ids%') AND ("10" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#BBFCAC"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 12 AND !("12" IN '%classification_ids%') AND ("10" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#BBFCAC"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 13 AND !("13" IN '%classification_ids%') AND ("10" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#BBFCAC"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 32 AND !("32" IN '%classification_ids%') AND ("10" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#BBFCAC"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 11 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 11 AND "11" IN '%classification_ids%')
-  STYLE 
-    COLOR "#45C2A5"
-  END
-END
-
-
-    ##########################
     ##    CLASSE 12 ##########
     ##########################
     
@@ -278,7 +69,7 @@ END
 CLASS
   EXPRESSION ([pixel] = 12 AND "12" IN '%classification_ids%')
   STYLE 
-    COLOR "#B8AF4F"
+    COLOR "#b8af4f"
   END
 END
 
@@ -291,7 +82,7 @@ END
 CLASS
   EXPRESSION ([pixel] = 13 AND "13" IN '%classification_ids%')
   STYLE 
-    COLOR "#BDB76B"
+    COLOR "#F1C232"
   END
 END
 
@@ -303,6 +94,13 @@ END
 
 CLASS
   EXPRESSION ([pixel] = 14 AND "14" IN '%classification_ids%')
+  STYLE 
+    COLOR "#FFFFB2"
+  END
+END
+
+CLASS
+  EXPRESSION ([pixel] = 9 AND !("9" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
   STYLE 
     COLOR "#FFFFB2"
   END
@@ -322,48 +120,6 @@ CLASS
   END
 END
 
-CLASS
-  EXPRESSION ([pixel] = 21 AND !("21" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#FFFFB2"
-  END
-END
-    
-CLASS
-  EXPRESSION ([pixel] = 16 AND !("15" IN '%classification_ids%') AND !("16" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#FFFFB2"
-  END
-END
-    
-CLASS
-  EXPRESSION ([pixel] = 17 AND !("15" IN '%classification_ids%') AND !("17" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#FFFFB2"
-  END
-END
-    
-CLASS
-  EXPRESSION ([pixel] = 19 AND !("18" IN '%classification_ids%') AND !("19" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#FFFFB2"
-  END
-END
-    
-CLASS
-  EXPRESSION ([pixel] = 20 AND !("18" IN '%classification_ids%') AND !("20" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#FFFFB2"
-  END
-END
-    
-CLASS
-  EXPRESSION ([pixel] = 28 AND !("18" IN '%classification_ids%') AND !("28" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#FFFFB2"
-  END
-END
-
 
     ##########################
     ##    CLASSE 15 ##########
@@ -374,46 +130,6 @@ CLASS
   EXPRESSION ([pixel] = 15 AND "15" IN '%classification_ids%')
   STYLE 
     COLOR "#FFD966"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 16 AND !("16" IN '%classification_ids%') AND ("15" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#FFD966"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 17 AND !("17" IN '%classification_ids%') AND ("15" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#FFD966"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 16 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 16 AND "16" IN '%classification_ids%')
-  STYLE 
-    COLOR "#CF7F3B"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 17 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 17 AND "17" IN '%classification_ids%')
-  STYLE 
-    COLOR "#A0D0DE"
   END
 END
 
@@ -430,66 +146,6 @@ CLASS
   END
 END
 
-CLASS
-  EXPRESSION ([pixel] = 19 AND !("19" IN '%classification_ids%') AND ("18" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#E974ED"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 20 AND !("20" IN '%classification_ids%') AND ("18" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#E974ED"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 28 AND !("28" IN '%classification_ids%') AND ("18" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#E974ED"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 19 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 19 AND "19" IN '%classification_ids%')
-  STYLE 
-    COLOR "#D5A6BD"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 20 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 20 AND "20" IN '%classification_ids%')
-  STYLE 
-    COLOR "#C27BA0"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 21 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 21 AND "21" IN '%classification_ids%')
-  STYLE 
-    COLOR "#FFEFC3"
-  END
-END
-
 
     ##########################
     ##    CLASSE 22 ##########
@@ -499,81 +155,7 @@ END
 CLASS
   EXPRESSION ([pixel] = 22 AND "22" IN '%classification_ids%')
   STYLE 
-    COLOR "#EA9999"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 23 AND !("23" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#EA9999"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 24 AND !("24" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#EA9999"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 25 AND !("25" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#EA9999"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 29 AND !("29" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#EA9999"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 30 AND !("30" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#EA9999"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 23 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 23 AND "23" IN '%classification_ids%')
-  STYLE 
-    COLOR "#DD7E6B"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 24 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 24 AND "24" IN '%classification_ids%')
-  STYLE 
-    COLOR "#af2a2a"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 25 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 25 AND "25" IN '%classification_ids%')
-  STYLE 
-    COLOR "#FF99FF"
+    COLOR "#d0670f"
   END
 END
 
@@ -586,21 +168,7 @@ END
 CLASS
   EXPRESSION ([pixel] = 26 AND "26" IN '%classification_ids%')
   STYLE 
-    COLOR "#0000FF"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 31 AND !("31" IN '%classification_ids%') AND ("26" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#0000FF"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 33 AND !("33" IN '%classification_ids%') AND ("26" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#0000FF"
+    COLOR "#0022F6"
   END
 END
 
@@ -614,83 +182,5 @@ CLASS
   EXPRESSION ([pixel] = 27 AND "27" IN '%classification_ids%')
   STYLE 
     COLOR "#D5D5E5"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 28 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 28 AND "28" IN '%classification_ids%')
-  STYLE 
-    COLOR "#dd497f"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 29 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 29 AND "29" IN '%classification_ids%')
-  STYLE 
-    COLOR "#FF8C00"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 30 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 30 AND "30" IN '%classification_ids%')
-  STYLE 
-    COLOR "#8A2BE2"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 31 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 31 AND "31" IN '%classification_ids%')
-  STYLE 
-    COLOR "#29EEE4"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 32 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 32 AND "32" IN '%classification_ids%')
-  STYLE 
-    COLOR "#968c46"
-  END
-END
-
-
-    ##########################
-    ##    CLASSE 33 ##########
-    ##########################
-    
-
-CLASS
-  EXPRESSION ([pixel] = 33 AND "33" IN '%classification_ids%')
-  STYLE 
-    COLOR "#0000FF"
   END
 END
