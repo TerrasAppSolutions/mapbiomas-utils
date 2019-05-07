@@ -73,7 +73,7 @@ def get_transitions_meta(path_folder, filter_layer=None, year1=None, year2=None)
 
 def format_data(data, idprefix=0):
     arranjos = get_arranjos()
-
+    print(arranjos)
     data_result = []
 
     for item in data:

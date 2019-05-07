@@ -4,7 +4,7 @@ import argparse
 
 def get_integration_years():
 
-    years = range(1985, 2018)
+    years = range(2010, 2018)
 
     return years
 
@@ -17,7 +17,7 @@ def vrt_integration(pathInput, pathOutput):
     for band in bands:
 
         pathImageInput = pathInput + '/*.tif'
-        pathImageOutput = pathOutput + "/INTEGRACAO_BRASIL_" + str(integrationYears[band]) + '.vrt'
+        pathImageOutput = pathOutput + "/INTEGRACAO_" + str(integrationYears[band]) + '.vrt'
 
         osCommand = 'gdalbuildvrt -b ' + str(band + 1) + " " + \
                      pathImageOutput + " "  + pathImageInput
@@ -46,7 +46,7 @@ def vrt_transition(pathInput, pathOutput):
     for band in bands:
 
         pathImageInput = pathInput + '/*.tif'
-        pathImageOutput = pathOutput + "/TRANSICAO_BRASIL_" + str(transitionYears[band]) + '.vrt'
+        pathImageOutput = pathOutput + "/TRANSICAO_" + str(transitionYears[band]) + '.vrt'
 
         osCommand = 'gdalbuildvrt -b ' + str(band + 1) + " " + \
                      pathImageOutput + " "  + pathImageInput
@@ -64,7 +64,7 @@ def vrt_rgb(pathInput, pathOutput):
     for band in bands:
         year = str(integrationYears[band])
         pathImageInput = pathInput + '/mosaic-rgb-collection3-' + year +  '*.tif'
-        pathImageOutput = pathOutput + "/RGB_PAIS_BRASIL_" + str(integrationYears[band]) + '.vrt'
+        pathImageOutput = pathOutput + "/RGB_" + str(integrationYears[band]) + '.vrt'
 
         osCommand = 'gdalbuildvrt -allow_projection_difference -overwrite ' + \
                      pathImageOutput + " "  + pathImageInput

@@ -1,0 +1,12 @@
+"id","classe","cor","parente","ref","versao","valor","valor_l1","valor_l2","valor_l3","ativo"
+1,Vegetación Natural Terrestre,#129912,0,"1.",1,1,1,1,1,true
+2,Vegetación Leñosa,#1f4423,1,"1.0.",1,2,1,2,2,true
+3,Plantaciones Forestales,#935132,14,"2.0.",1,9,14,9,9,true
+4,Vegetación Herbáceas,#b8af4f,1,"1.1.",1,12,1,12,12,true
+5,Vegetación dispersa,#F1C232,1,"1.2.",1,13,1,13,13,true
+6,Áreas Agropecuarias y Forestales,#FFFFB2,0,"2.",1,14,14,14,14,false
+7,Pastura,#FFD966,14,"2.1.",1,15,14,15,15,true
+8,Cultivos Agrícolas,#E974ED,14,"2.2.",1,18,14,18,18,true
+9,Áreas No Vegetadas,#d0670f,0,"3.",1,22,22,22,22,true
+10,Cuerpos de Agua,#0022F6,0,"4.",1,26,26,26,26,true
+11,No Observado,#D5D5E5,0,"5.",1,27,27,27,27,true

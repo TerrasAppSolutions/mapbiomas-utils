@@ -1,0 +1,186 @@
+
+
+
+    ##########################
+    ##    CLASSE 1 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 1 AND "1" IN '%classification_ids%')
+  STYLE 
+    COLOR "#129912"
+  END
+END
+
+CLASS
+  EXPRESSION ([pixel] = 2 AND !("2" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  STYLE 
+    COLOR "#129912"
+  END
+END
+
+CLASS
+  EXPRESSION ([pixel] = 12 AND !("12" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  STYLE 
+    COLOR "#129912"
+  END
+END
+
+CLASS
+  EXPRESSION ([pixel] = 13 AND !("13" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  STYLE 
+    COLOR "#129912"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 2 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 2 AND "2" IN '%classification_ids%')
+  STYLE 
+    COLOR "#1f4423"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 9 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 9 AND "9" IN '%classification_ids%')
+  STYLE 
+    COLOR "#935132"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 12 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 12 AND "12" IN '%classification_ids%')
+  STYLE 
+    COLOR "#b8af4f"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 13 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 13 AND "13" IN '%classification_ids%')
+  STYLE 
+    COLOR "#F1C232"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 14 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 14 AND "14" IN '%classification_ids%')
+  STYLE 
+    COLOR "#FFFFB2"
+  END
+END
+
+CLASS
+  EXPRESSION ([pixel] = 9 AND !("9" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
+  STYLE 
+    COLOR "#FFFFB2"
+  END
+END
+
+CLASS
+  EXPRESSION ([pixel] = 15 AND !("15" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
+  STYLE 
+    COLOR "#FFFFB2"
+  END
+END
+
+CLASS
+  EXPRESSION ([pixel] = 18 AND !("18" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
+  STYLE 
+    COLOR "#FFFFB2"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 15 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 15 AND "15" IN '%classification_ids%')
+  STYLE 
+    COLOR "#FFD966"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 18 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 18 AND "18" IN '%classification_ids%')
+  STYLE 
+    COLOR "#E974ED"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 22 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 22 AND "22" IN '%classification_ids%')
+  STYLE 
+    COLOR "#d0670f"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 26 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 26 AND "26" IN '%classification_ids%')
+  STYLE 
+    COLOR "#0022F6"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 27 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 27 AND "27" IN '%classification_ids%')
+  STYLE 
+    COLOR "#D5D5E5"
+  END
+END
