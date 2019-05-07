@@ -3,6 +3,14 @@ import os
 import argparse
 import pandas
 
+
+def get_info_project(project_name):
+    if project_name == 'chaco':
+       data = json.load(open('info_chaco.json')) 
+    else:
+        raise Exception('this project name doesnt exist')
+    return data
+
 def get_list_names_raster():
     return ['AMAZONIA', 'CAATINGA', 'CERRADO', 'MATAATLANTICA', 'PAMPA', 'PANTANAL']
 

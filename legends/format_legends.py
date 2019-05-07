@@ -3,6 +3,8 @@ import psycopg2
 import psycopg2.extras
 import config
 
+
+
 def format_legends(path):
     df = pd.read_csv(path, sep=",")
     df.dropna(inplace=True, subset=['COD', 'Parent', 'COR'])
