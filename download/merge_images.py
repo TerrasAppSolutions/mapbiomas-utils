@@ -2,7 +2,7 @@
 import os
 import argparse
 import pandas
-
+import json
 
 def get_info_project(project_name):
     if project_name == 'chaco':
@@ -10,9 +10,6 @@ def get_info_project(project_name):
     else:
         raise Exception('this project name doesnt exist')
     return data
-
-def get_list_names_raster():
-    return ['AMAZONIA', 'CAATINGA', 'CERRADO', 'MATAATLANTICA', 'PAMPA', 'PANTANAL']
 
 def buildvrt(folder_path, folder_vrt, biome):
     
@@ -60,14 +57,16 @@ def merge_images(folder_path, biome):
     osCommand = 'gdal_translate -of GTiff -a_nodata 0 -co BIGTIFF=YES -co "COMPRESS=LZW" ' + folder_path + "/" + biome + ".vrt " + folder_path + "/" + biome + ".tif"
     os.system(osCommand)
 
-def execute(raster_name, folder_path, folder_vrt, csv_file):
+def execute(raster_name, folder_path, folder_vrt, info_project):
+
+    legends_csv_path = info_project["legends"]
 
     osCommand = "mkdir -p " + folder_vrt
     os.system(osCommand)
 
     if raster_name == 'all':
         
-        names = get_list_names_raster()
+        names = info_project['layers']
 
         #execute vrt
         for name in names:
@@ -75,7 +74,7 @@ def execute(raster_name, folder_path, folder_vrt, csv_file):
             buildvrt(folder_path, folder_vrt, name)
 
         #add color table
-        add_colors_categories(folder_vrt, csv_file)
+        add_colors_categories(folder_vrt, legends_csv_path)
 
         #execute merge
         for name in names:
@@ -86,27 +85,27 @@ def execute(raster_name, folder_path, folder_vrt, csv_file):
         print('executing vrt', raster_name)
         buildvrt(folder_path, folder_vrt, raster_name)
         print('executing merge', raster_name)
-        add_colors_categories(folder_vrt, csv_file)
+        add_colors_categories(folder_vrt, legends_csv_path)
         merge_images(folder_vrt, raster_name)
 
 
 def interface():
     parser = argparse.ArgumentParser(description='Merge the images for download')
 
-    parser.add_argument('name', type=str, help='choose the raster name', 
-                        choices=['AMAZONIA', 'CAATINGA', 'CERRADO', 'MATAATLANTICA', 
-                        'PAMPA', 'PANTANAL', 'all']) 
+    parser.add_argument('project', type=str, help='write the project name', choices=['brasil', 'chaco', 'raisg'])
 
     parser.add_argument('folder_path', type=str,  help='choose the raster folder')
 
     parser.add_argument('folder_vrt', type=str,  help='choose the vrt folder')
 
-    raster_name = parser.parse_args().name
+    project = parser.parse_args().project
     folder_vrt = parser.parse_args().folder_vrt
     folder_path = parser.parse_args().folder_path
-    csv_file = "legendas.csv"
+    
 
-    execute(raster_name, folder_path, folder_vrt, csv_file)
+    info_project = get_info_project(project)
+
+    execute("all", folder_path, folder_vrt, info_project)
     
 
 
