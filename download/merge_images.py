@@ -72,9 +72,6 @@ def execute(raster_name, folder_path, folder_vrt, info_project):
             print('executing vrt', name)
             buildvrt(folder_path, folder_vrt, name)
 
-        #add color table
-        add_colors_categories(folder_vrt, legends_csv_path)
-
         #execute merge
         for name in names:
             print('executing merge', name)
@@ -84,7 +81,6 @@ def execute(raster_name, folder_path, folder_vrt, info_project):
         print('executing vrt', raster_name)
         buildvrt(folder_path, folder_vrt, raster_name)
         print('executing merge', raster_name)
-        add_colors_categories(folder_vrt, legends_csv_path)
         merge_images(folder_vrt, raster_name)
 
 
