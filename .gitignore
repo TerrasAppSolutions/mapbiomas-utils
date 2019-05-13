@@ -3,3 +3,6 @@
 *config.py
 .vscode
 /.project
+.scannerwork
+
+sonar-project.properties
