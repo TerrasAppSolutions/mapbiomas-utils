@@ -65,7 +65,7 @@ def upload_to_postgres(data):
 
 
 
-data = format_legends("./legenda_chaco_original_v2.csv")
+data = format_legends("./legenda_chaco_original_v3.csv")
 import pprint
 # pprint.pprint(data)
 upload_to_postgres(data)
