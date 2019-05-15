@@ -1,0 +1,13 @@
+"id","classe","cor","parente","ref","versao","valor","valor_l1","valor_l2","valor_l3","ativo"
+1,Formación leñosa,#129912,0,"1.",1,1,1,1,1,true
+2,Leñosas Forestal Natural,#006400,1,"1.1",1,2,1,2,2,true
+3,Cultivo de Leñosas,#935132,1,"1.2",1,9,1,9,9,true
+4,Formación natural no leñosa,#FF9966,0,"2.",1,10,10,10,10,true
+5,Herbáceas,#B8AF4F,10,"2.1",1,12,10,12,12,true
+6,Vegetación dispersa,#F1C232,0,"3",1,13,13,13,13,true
+7,Uso Agropecuario,#FFFFB2,0,"4",1,14,14,14,14,true
+8,Pastura,#FFD966,14,"4.1.",1,15,14,15,15,true
+9,Agricultura,#E974ED,14,"4.2.",1,18,14,18,18,true
+10,Área no vegetada,#EA9999,0,"5.",1,22,22,22,22,true
+11,Cuerpos de Agua,#0022F6,0,"6.",1,26,26,26,26,true
+12,No Observado,#D5D5E5,0,"7.",1,27,27,27,27,true

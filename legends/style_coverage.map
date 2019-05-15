@@ -36,7 +36,7 @@ END
 CLASS
   EXPRESSION ([pixel] = 2 AND "2" IN '%classification_ids%')
   STYLE 
-    COLOR "#1F4423"
+    COLOR "#006400"
   END
 END
 
