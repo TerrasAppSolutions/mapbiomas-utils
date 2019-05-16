@@ -132,7 +132,7 @@ def write_mapfile(text, path):
         
 
 
-data = get_data_from_csv('./classes_201905141556.csv')
+data = get_data_from_csv('./classes_201905161036.csv')
 # pprint.pprint(data)
 text = get_mapfile_text(data)
 

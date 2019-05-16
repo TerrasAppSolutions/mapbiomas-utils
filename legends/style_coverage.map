@@ -108,21 +108,21 @@ END
 CLASS
   EXPRESSION ([pixel] = 14 AND "14" IN '%classification_ids%')
   STYLE 
-    COLOR "#FFFFB2"
+    COLOR "#f4f004"
   END
 END
 
 CLASS
   EXPRESSION ([pixel] = 15 AND !("15" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
   STYLE 
-    COLOR "#FFFFB2"
+    COLOR "#f4f004"
   END
 END
 
 CLASS
   EXPRESSION ([pixel] = 18 AND !("18" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
   STYLE 
-    COLOR "#FFFFB2"
+    COLOR "#f4f004"
   END
 END
 
