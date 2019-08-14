@@ -2,7 +2,8 @@
     
     {
         "col":"4",
-        "gs_bucket":{"integracao":"gs://mapbiomas-dev-storage/COLECOES/COLECAO4/INTEGRACAO",
+        "gs_bucket":{
+            "integracao":"gs://mapbiomas-dev-storage/COLECOES/COLECAO4/INTEGRACAO",
             "transicao":"gs://mapbiomas-dev-storage/COLECOES/COLECAO4/TRANSICAO"
         },
         "years":[1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,

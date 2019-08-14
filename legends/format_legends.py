@@ -3,16 +3,18 @@ import psycopg2
 import psycopg2.extras
 import config
 
-
+def format_data(path):
+    df = pd.read_csv(path, sep=",")
+    print(df.head())
 
 def format_legends(path):
     df = pd.read_csv(path, sep=",")
-    df.dropna(inplace=True, subset=['COD', 'Parent', 'COR'])
+    df.dropna(inplace=True, subset=['id', 'parent', 'cor'])
 
     data = []
     for item in df.T.to_dict().values():
         data.append({
-            "nivel":item["Level"],
+            "nivel":None,
             "rgb":eval(item['RGB']),
             "classe":item['Legend'], 
             "cor":item['COR'],
@@ -63,10 +65,11 @@ def upload_to_postgres(data):
     conn.commit()
     conn.close()
 
+format_data("./data/legenda_brasil_col4_20190814.csv")
 
 
-data = format_legends("./legenda_chaco_original_v3.csv")
-import pprint
+# data = format_data("./data/legenda_brasil_col4_20190814.csv")
+# import pprint
 # pprint.pprint(data)
-upload_to_postgres(data)
+# upload_to_postgres(data)
 

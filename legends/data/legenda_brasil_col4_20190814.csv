@@ -1,0 +1,34 @@
+classe,cor,parent,ref,id,ativo
+Floresta,#129912,0,1,1,1
+Floresta Natural,#1F4423,1,1.1.,2,1
+Formação Florestal,#006400,2,1.1.1.,3,1
+Formação Savânica,#32CD32,2,1.1.2.,4,1
+Mangue,#687537,2,1.1.3.,5,1
+Floresta Alagada,#76A5AF,2,1.1.4.,6,0
+Floresta Degradada,#29EEE4,2,1.1.5.,7,0
+Floresta Secundária,#77A605,2,1.1.4.,8,0
+Floresta Plantada,#935132,1,1.2.,9,1
+Formação Natural não Florestal,#BBFCAC,0,2,10,1
+Área Úmida Natural não Florestal,#45C2A5,10,2.1.,11,1
+Formação Campestre,#B8AF4F,10,2.2.,12,1
+Outra Formação não Florestal,#BDB76B,10,2.5.,13,1
+Agropecuária,#FFFFB2,0,3,14,1
+Pastagem,#FFD966,14,3.1.,15,1
+Pastagem Natural,#CF7F3B,15,3.1.1.,16,0
+Pastagem Plantada,#A0D0DE,15,3.1.2.,17,0
+Agricultura,#E974ED,14,3.2.,18,1
+Cultivo Anual e Perene,#D5A6BD,18,3.2.1.,19,1
+Cultivo Semi-Perene,#C27BA0,18,3.2.2.,20,1
+Mosaico de Agricultura ou Pastagem,#FFEFC3,14,3.3.,21,1
+Área não Vegetada,#EA9999,0,4,22,1
+Praia e Duna,#DD7E6B,22,4.3.,23,1
+Infraestrutura Urbana,#af2a2a,22,4.1.,24,1
+Outra área não Vegetada,#FF99FF,22,4.4.,25,1
+Corpo D'água,#0000FF,0,5,26,1
+Não observado,#D5D5E5,0,6,27,1
+Mosaico de Cultivo,#dd497f,18,3.2.3.,28,0
+Afloramento Rochoso,#FF8C00,22,2.4,29,1
+Mineração,#8A2BE2,22,4.4.,30,1
+Aquicultura,#29EEE4,26,5.2.,31,1
+Apicum,#968c46,10,2.3.,32,1
+"Rio, Lago e Oceano",#0000FF,26,5.1.,33,1
