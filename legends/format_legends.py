@@ -1,44 +1,86 @@
 import pandas as pd
+import numpy as np
 import psycopg2
 import psycopg2.extras
 import config
 
-def format_data(path):
-    df = pd.read_csv(path, sep=",")
-    print(df.head())
 
-def format_legends(path):
+def add_nivel(df):
+    """
+        The function should add a column showing 
+        a number of the level of hierarchy
+    """
+
+    def get_next_level(parent, nivel):
+        if parent == 0:
+            return nivel
+        
+        parent_level = df.loc[df['id']==parent,'nivel'].values[0]
+        
+        next_level = None        
+        if parent_level:
+            next_level = parent_level + 1
+        return next_level
+
+
+    df['nivel'] = None
+
+    df.loc[df.parent == 0, 'nivel'] = 1
+    df['nivel'] = df.apply(lambda x: get_next_level(x['parent'], x['nivel']), axis=1)
+    df['nivel'] = df.apply(lambda x: get_next_level(x['parent'], x['nivel']), axis=1)
+    df['nivel'] = df['nivel'].astype(int)
+
+
+def add_valor(df):
+
+    def get_valor_l1_for_l3(x):
+        r = df['parent'].loc[(df['id'] == x['valor_l2']) & (df['nivel'] == 2)].values
+        r = r[0] if r else None
+        return r
+
+
+    df['valor'] = None
+    df['valor_l1'] = None
+    df['valor_l2'] = None
+    df['valor_l3'] = None
+
+    df['valor'] = df['id']
+
+
+    #level 1
+    df['valor_l1'] = df['id'].where(df['nivel'] == 1, df['valor_l1'])
+    df['valor_l2'] = df['id'].where(df['nivel'] == 1, df['valor_l2'])
+    df['valor_l3'] = df['id'].where(df['nivel'] == 1, df['valor_l3'])
+
+    
+    #level 2
+    df['valor_l1'] = df['parent'].where(df['nivel'] == 2, df['valor_l1'])
+    df['valor_l2'] = df['id'].where(df['nivel'] == 2, df['valor_l2'])
+    df['valor_l3'] = df['id'].where(df['nivel'] == 2, df['valor_l3'])
+
+    #level 3    
+    f = lambda x: df['parent'].loc[(df['valor_l2'] == x['valor_l2']) & (df['nivel'] == 2)]
+    
+    df['valor_l2'] = df['parent'].where(df['nivel'] == 3, df['valor_l2'])
+    df['valor_l1'] = np.where(df['nivel'] == 3, df.apply(get_valor_l1_for_l3, axis=1), df['valor_l1'])
+    df['valor_l3'] = df['id'].where(df['nivel'] == 3, df['valor_l3'])
+
+def rename_col(df):
+    df.rename(columns={"parent": "parente"}, inplace=True)
+
+def adjust_data(path):
     df = pd.read_csv(path, sep=",")
     df.dropna(inplace=True, subset=['id', 'parent', 'cor'])
 
-    data = []
-    for item in df.T.to_dict().values():
-        data.append({
-            "nivel":None,
-            "rgb":eval(item['RGB']),
-            "classe":item['Legend'], 
-            "cor":item['COR'],
-            "parente":item['Parent'],
-            "ref":item['Ref'],
-            "versao":1,
-            "valor":int(item['COD']),
-            "valor_l1":None,
-            "valor_l2":None,
-            "valor_l3":int(item['COD']),
-            "ativo":bool(item["Active"])
-        })  
+    df['ativo'] = df['ativo'].apply(lambda x: bool(x))
 
-    for item in data:         
-        if item['parente'] == 0:
-            item['valor_l2'] = item['valor_l3']        
-            item['valor_l1'] = item['valor_l3']
-        if item['nivel'] == 3:
-            item['valor_l2'] = item['parente']
-            item['valor_l1'] = df.loc[df['COD']== item['valor_l2'], 'Parent'].to_list()[0]
-        if item['nivel'] == 2:
-            item['valor_l1'] = item['parente']
-            item['valor_l2'] = item['valor_l3']
-    return data
+    add_nivel(df)  
+
+    add_valor(df)
+
+    rename_col(df)
+
+    print(df)
 
 def upload_to_postgres(data):
     conn = psycopg2.connect(database=config.postgres_db, 
@@ -65,7 +107,7 @@ def upload_to_postgres(data):
     conn.commit()
     conn.close()
 
-format_data("./data/legenda_brasil_col4_20190814.csv")
+adjust_data("./data/legenda_brasil_col4_20190814.csv")
 
 
 # data = format_data("./data/legenda_brasil_col4_20190814.csv")
