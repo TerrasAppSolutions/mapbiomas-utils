@@ -68,9 +68,11 @@ def add_valor(df):
 def rename_col(df):
     df.rename(columns={"parent": "parente"}, inplace=True)
 
-def adjust_data(path):
+def adjust_data(path, versao):
     df = pd.read_csv(path, sep=",")
     df.dropna(inplace=True, subset=['id', 'parent', 'cor'])
+
+    df['versao'] = versao
 
     df['ativo'] = df['ativo'].apply(lambda x: bool(x))
 
@@ -80,9 +82,9 @@ def adjust_data(path):
 
     rename_col(df)
 
-    print(df)
+    return list(df.T.to_dict().values())
 
-def upload_to_postgres(data):
+def insert_db_postgres(data):
     conn = psycopg2.connect(database=config.postgres_db, 
     user=config.postgres_user, 
     password=config.postgres_password,
@@ -90,7 +92,7 @@ def upload_to_postgres(data):
     port=config.postgres_port
     )
 
-    cur = conn.cursor()
+    cur = conn.cursor(data)
 
     sqlinsert = """INSERT INTO classes (classe,cor,parente,ref,versao,valor,valor_l1,valor_l2,valor_l3,ativo)
                 VALUES %s"""
@@ -107,11 +109,46 @@ def upload_to_postgres(data):
     conn.commit()
     conn.close()
 
-adjust_data("./data/legenda_brasil_col4_20190814.csv")
+
+def update_db_postgres(data):
+    conn = psycopg2.connect(database=config.postgres_db, 
+    user=config.postgres_user, 
+    password=config.postgres_password,
+    host=config.postgres_host,
+    port=config.postgres_port
+    )
+
+    cur = conn.cursor()
+
+    for a in data:
+        sqlupdate = """UPDATE classes
+                    SET classe = %s,
+                        cor = %s,
+                        parente = %s,
+                        ref = %s,
+                        versao = %s,
+                        valor_l1 = %s,
+                        valor_l2 = %s,
+                        valor_l3 = %s,
+                        ativo = %s
+                    WHERE valor = %s"""
+
+                    
+
+        cur.execute(sqlupdate,
+      (a['classe'], a['cor'], a['parente'], a['ref'], a['versao'], a['valor_l1'], a['valor_l2'], a['valor_l3'], a['ativo'], a['valor']))
 
 
-# data = format_data("./data/legenda_brasil_col4_20190814.csv")
-# import pprint
-# pprint.pprint(data)
-# upload_to_postgres(data)
+
+    conn.commit()
+    conn.close()
+
+def start(path_csv, versao):
+    data = adjust_data(path_csv, versao)
+    update_db_postgres(data)
+
+if __name__ == "__main__":
+    path_csv = "./data/legenda_brasil_col4_20190814.csv"
+    versao = 4
+    start(path_csv, versao)
 
