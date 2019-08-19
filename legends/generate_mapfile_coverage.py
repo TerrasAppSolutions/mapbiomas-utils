@@ -1,5 +1,7 @@
 import pandas as pd
 import pprint
+import legend_lib
+
 def gen_class_mapfile_n1(pixel, rgb):
     pixel_str = str(pixel)    
 
@@ -86,12 +88,6 @@ def get_mapfile_text_pixel(pixel, nivel, rgb, data):
     return data_text
         
 
-def get_data_from_csv(path_csv):
-    df = pd.read_csv(path_csv, sep=",")
-    data = df.T.to_dict().values()
-    data = sorted(data, key = lambda i: i['valor']) 
-    return data
-
 def get_pixel_nivel(valor, valor_l1, valor_l2):
     nivel = None
     if valor_l1 == valor and valor_l2 == valor:
@@ -128,12 +124,17 @@ def write_mapfile(text, path):
     txt = open(path, 'w') 
     txt.write(text)
     txt.close()
-     
-        
 
+def start(path_csv):
 
-data = get_data_from_csv('./classes_201905161036.csv')
-# pprint.pprint(data)
-text = get_mapfile_text(data)
+    data = legend_lib.adjust_data(path_csv)
+    data = sorted(data, key = lambda i: i['valor']) 
 
-write_mapfile(text, "style_coverage.map")
+    text = get_mapfile_text(data)
+
+    write_mapfile(text, "style_coverage.map")
+
+if __name__ == "__main__":
+    path_csv = "./data/legenda_brasil_col4_20190814.csv"   
+
+    start(path_csv)  
