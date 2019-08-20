@@ -2,8 +2,8 @@
 import os
 import argparse
 
-def exportCoberturaGCSToServer(gcs_url, dir_dst):
-    osCommand = "gsutil -m cp -r " + gcs_url + " " +  dir_dst
+def export_images_GCS_to_server(gcs_url, dir_dst):
+    osCommand = "gsutil -m cp -r " + gcs_url + "/*.tif " +  dir_dst
      
     print(osCommand)
     os.system(osCommand)
