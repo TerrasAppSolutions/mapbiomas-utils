@@ -72,24 +72,23 @@ def interface():
     parser.add_argument('colecao', type=str, default='integracao', help='choose which collection', 
                     choices=['integracao', 'transicao', 'rgb'])
 
-    parser.add_argument('dir_src', type=str,  help='the vrt folder')
-
     parser.add_argument('part', type=str, default='all', help='which part do you want to start', 
                         choices=['1','2','3','4', 'all'])
 
     
     project = parser.parse_args().project
     colecao = parser.parse_args().colecao
-    path_input = parser.parse_args().dir_src
     part = parser.parse_args().part
 
     info_project = get_info_project(project)
     info = [item for item in info_project if item['col'] == '4'][0]
 
     if colecao == "integracao":
+        path_input = info["folders"]["integracao_vrt"]
         ovr_integracao(path_input, str(part), info)
 
     if colecao == "transicao":
+        path_input = info["folders"]["transicao_vrt"]
         ovr_transicao(path_input, str(part), info)
 
     if colecao == "rgb":
