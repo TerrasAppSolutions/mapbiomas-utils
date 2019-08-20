@@ -2,13 +2,7 @@ import os
 import re
 import argparse
 import json
-
-def get_info_project(project_name):
-    if project_name == 'chaco':
-       data = json.load(open('info_chaco.json')) 
-    else:
-        raise Exception('this project name doesnt exist')
-    return data
+from info_lib import get_info_project
 
 def ovr_integracao(path_input, part, info_project):
 
@@ -30,7 +24,7 @@ def ovr_integracao(path_input, part, info_project):
 
                 process_start = True
 
-        os_command = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBITS --config GDAL_CACHEMAX 2000 " + vrt + " 2 4 8 16"
+        os_command = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBITS --config GDAL_CACHEMAX 1000 " + vrt + " 2 4 8 16"
 
         if process_start:
             print(os_command)
@@ -52,7 +46,7 @@ def ovr_transicao(pathInput, part, info_project):
                 process_start = True
 
         if process_start:
-            osCommand = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBITS --config GDAL_CACHEMAX 4000 " + vrt + " 2 4 8 16"
+            osCommand = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBITS --config GDAL_CACHEMAX 1000 " + vrt + " 2 4 8 16"
             print(osCommand)
             os.system(osCommand)
 
@@ -64,7 +58,7 @@ def ovr_rgb(pathInput, part):
 
 
     for vrt in files:
-        osCommand = "gdaladdo -r average --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC YCBCR --config BIGTIFF YES --config GDAL_CACHEMAX 6000 " + vrt + " 2 4 8 16"
+        osCommand = "gdaladdo -r average --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC YCBCR --config BIGTIFF YES --config GDAL_CACHEMAX 1000 " + vrt + " 2 4 8 16"
         print(osCommand)
         os.system(osCommand)
 
@@ -90,12 +84,13 @@ def interface():
     part = parser.parse_args().part
 
     info_project = get_info_project(project)
+    info = [item for item in info_project if item['col'] == '4'][0]
 
     if colecao == "integracao":
-        ovr_integracao(path_input, str(part), info_project)
+        ovr_integracao(path_input, str(part), info)
 
     if colecao == "transicao":
-        ovr_transicao(path_input, str(part), info_project)
+        ovr_transicao(path_input, str(part), info)
 
     if colecao == "rgb":
         ovr_rgb(path_input, str(part))
