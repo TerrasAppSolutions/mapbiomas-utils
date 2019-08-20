@@ -5,7 +5,9 @@ from info_lib import get_info_project
 
 def get_integration_years():
 
-    years = range(2010, 2018)
+    info = get_info_project(project_name)
+    info = [item for item in info if item['col'] == '4'][0]
+    years = info["years"]
 
     return years
 
