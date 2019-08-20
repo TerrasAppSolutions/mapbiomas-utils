@@ -7,11 +7,11 @@ def create_folders_server(cobertura=True, transicao=True, RGB=True):
 def export_to_server(info):
     #cobertura
     gcs_url = info["gs_bucket"]["integracao"]
-    folders = info["gs_bucket"]["integracao"]
+    dir_dst = info["folders"]["integracao"]
     export_images_GCS_to_server(gcs_url, dir_dst)
     #transicao
     gcs_url = info["gs_bucket"]["transicao"]
-    folders = info["gs_bucket"]["transicao"]
+    dir_dst = info["folders"]["transicao"]
     export_images_GCS_to_server(gcs_url, dir_dst)
 
 
