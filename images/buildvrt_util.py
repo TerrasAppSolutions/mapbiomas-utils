@@ -79,19 +79,21 @@ def interface():
     parser.add_argument('colecao', type=str, default='integracao', help='choose which collection', 
                     choices=['integracao', 'transicao', 'rgb'])
 
-    parser.add_argument('dir_src', type=str,  help='the source folder')
-
-    parser.add_argument('dir_dst', type=str,  help='the destination folder')
     
     project_name = parser.parse_args().project
     colecao = parser.parse_args().colecao
-    dir_src = parser.parse_args().dir_src
-    dir_dst = parser.parse_args().dir_dst
+
+    info = get_info_project(project_name)
+    info = [item for item in info if item['col'] == '4'][0]
 
     if colecao == "integracao":
+        dir_src = info["folders"]["integracao"]
+        dir_dst = info["folders"]["integracao_vrt"]
         vrt_integration(dir_src, dir_dst)
 
     if colecao == 'transicao':
+        dir_src = info["folders"]["transicao"]
+        dir_dst = info["folders"]["transicao_vrt"]
         vrt_transition(dir_src, dir_dst, project_name)
 
     if colecao == 'rgb':

@@ -20,7 +20,9 @@ def create_vrt_ovr_integracao(info):
     dir_src = info["folders"]["integracao"]
     dir_dst = info["folders"]["integracao_vrt"]
     buildvrt_util.vrt_integration(dir_src, dir_dst)
-    ovr_integracao(dir_dst, str(part), info)
+
+    for part in range(1,5):
+        ovr_integracao(dir_dst, str(part), info)
 
 
 
