@@ -63,7 +63,7 @@ def get_cobertura_meta(path_folder, filter_layer=None, year = None):
 
 def format_data(data, idprefix=0):
     
-    classes = [str(i) for i in range(0, 34)]
+    classes = [str(i) for i in range(0, 35)]
 
     data_result = []
     for item in data:

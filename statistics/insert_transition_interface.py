@@ -2,6 +2,14 @@ import insert_transition_postgres
 import insert_transition_municipios_postgres
 import argparse
 from functools import reduce
+import json
+
+def get_info_project(project_name):
+    if project_name == 'chaco':
+       data = json.load(open('info_chaco.json')) 
+    else:
+        raise Exception('this project name doesnt exist')
+    return data
 
 
 def send_to_postgres_municipios(path_json, idprefix = 0):
@@ -28,119 +36,49 @@ def get_path_json(path_folder, years_pair, filter_layer):
     filter_layer, year1=year1, year2=year2)[0]['json_path']
     return json_path
 
-def biomas(path_folder, transition_years):
-    filter_layer = 'biomas'
-    for years_pair in transition_years:        
-        path_json = get_path_json(path_folder, years_pair, filter_layer)
-        send_to_postgres(path_json)
+def send_single_layer(layer, idprefix, path_folder, transition_years):
+    for years in transition_years:
+        try:
+            path_json = get_path_json(path_folder, years, layer)
+            send_to_postgres(path_json, idprefix)
+        except:
+            print("ERROR", layer, years)
 
-def bacias_nivel_1(path_folder, transition_years):
+def start_all_layers(info_project, dir_geojson):
+    for info_layer in info_project['layers']:
+        layer = info_layer['layer']
+        start_one_layer(info_project, dir_geojson, layer)
 
-    idprefix = 7000000
-    filter_layer = 'bacias.nivel.1'
+def start_one_layer(info_project, dir_geojson, layer):
 
-    for years_pair in transition_years:        
-        path_json = get_path_json(path_folder, years_pair, filter_layer)
-        send_to_postgres(path_json,  idprefix)
+    info_layer = [_ for _ in info_project['layers'] if _['layer'] == layer][0]
 
-def bacias_nivel_2(path_folder, transition_years):
-
-    idprefix = 7100000
-    filter_layer = 'bacias.nivel.2'
-
-    for years_pair in transition_years:        
-        path_json = get_path_json(path_folder, years_pair, filter_layer)
-        send_to_postgres(path_json,  idprefix)
-
-def municipios(path_folder, transition_years):
-
-    filter_layer = 'municipios'
-
-    for years_pair in transition_years:
-        
-        path_json = get_path_json(path_folder, years_pair, filter_layer)
-        send_to_postgres_municipios(path_json)
-
-def terra_indigena(path_folder, transition_years):
-    
-    idprefix = 6000000
-    filter_layer = 'ti'
-
-    for years_pair in transition_years:        
-        path_json = get_path_json(path_folder, years_pair, filter_layer)
-        send_to_postgres(path_json,  idprefix)
-
-def unidade_de_conservacao(path_folder, transition_years):
-    
-    idprefix = 6000000
-    filter_layer = 'uc'
-
-    for years_pair in transition_years:        
-        path_json = get_path_json(path_folder, years_pair, filter_layer)
-        send_to_postgres(path_json,  idprefix)
-
-def all_layers(path_folder, transition_years):
-    for years_pair in transition_years:
-        print(years_pair)
-
-        path_json = get_path_json(path_folder, years_pair, 'biomas')
-        send_to_postgres(path_json)
-
-        path_json = get_path_json(path_folder, years_pair, 'bacias.nivel.1')
-        send_to_postgres(path_json, idprefix=7000000)
-
-        path_json = get_path_json(path_folder, years_pair, 'bacias.nivel.2')
-        send_to_postgres(path_json, idprefix=7100000)
-
-        path_json = get_path_json(path_folder, years_pair, 'municipios')
-        send_to_postgres_municipios(path_json)
-
-        path_json = get_path_json(path_folder, years_pair, 'ti')
-        send_to_postgres(path_json, idprefix=6000000)
-
-        path_json = get_path_json(path_folder, years_pair, 'uc')
-        send_to_postgres(path_json, idprefix=6000000)
-
-        path_json = get_path_json(path_folder, years_pair, 'car.biomas')
-        send_to_postgres(path_json, idprefix=10000000)
-
-        path_json = get_path_json(path_folder, years_pair, 'car.municipios')
-        send_to_postgres(path_json, idprefix=10000000)
+    idprefix = info_layer['prefix']
+    transition_years = info_project['transition_years']
+    send_single_layer(layer, idprefix, dir_geojson, transition_years)
 
 def interface():
 
     parser = argparse.ArgumentParser(description='Export the statistics for the postgres database')
 
+    parser.add_argument('project', type=str, help='write the layer name',  choices=['brasil', 'chaco', 'raisg'])
 
-    parser.add_argument('layer', type=str, help='choose the layer', 
-                        choices=['biomas', 'car_biomas', 'bacias.nivel.1', 'bacias.nivel.2', 
-                        'municipios_estado_pais', 'car_municipios', 'all'])
+    parser.add_argument('layer', type=str, help='write the layer name')
 
     parser.add_argument('dir_geojson', type=str,  help='the geojson folder')
 
+    project = parser.parse_args().project
     layer = parser.parse_args().layer
     dir_geojson = parser.parse_args().dir_geojson
 
-
-    transition_years = ["1985_1986", "1986_1987", "1987_1988", "1988_1989", "1989_1990", "1990_1991", "1991_1992", "1992_1993", 
-                        "1993_1994", "1994_1995", "1995_1996", "1996_1997", "1997_1998", "1998_1999", "1999_2000", "2000_2001",
-                        "2001_2002", "2002_2003", "2003_2004", "2004_2005", "2005_2006", "2006_2007", "2007_2008", "2008_2009", 
-                        "2009_2010", "2010_2011", "2011_2012", "2012_2013", "2013_2014", "2014_2015", "2015_2016", "2016_2017",
-                        "1985_1990", "1990_1995", "1995_2000", "2000_2005", "2005_2010", "2010_2015", "2015_2017", "1990_2000", 
-                        "2000_2010", "2010_2017", "1985_2017", "2008_2017", "2012_2017" ]
+    info_project = get_info_project(project)
 
 
-    if layer == "biomas":
-        biomas(dir_geojson, transition_years)
+    if layer == "all":
+        start_all_layers(info_project, dir_geojson)
+    else:
+        start_one_layer(info_project, dir_geojson, layer)
 
-    if layer == "bacias.nivel.1":
-        bacias_nivel_1(dir_geojson, transition_years)
-    
-    if layer == "bacias.nivel.2":
-        bacias_nivel_2(dir_geojson, transition_years)
-
-    if layer == 'all':
-        all_layers(dir_geojson, transition_years)
 
 if __name__ == "__main__":
     interface()
