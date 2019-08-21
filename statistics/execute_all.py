@@ -1,5 +1,7 @@
 
 from export_gcs_server import export_geojson_GCS_to_server
+from info_lib import get_info_project
+
 def export_server(info):
     gcs_url = info["statistics"]["gs_bucket"]["all"]
     dir_dst = info["statistics"]["folder"]["all"]
