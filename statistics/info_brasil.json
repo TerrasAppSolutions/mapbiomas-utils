@@ -69,7 +69,7 @@
                 "prefix":7100000    
             },{
                 "layer":"municipios", 
-                "type":"single",     
+                "type":"municipios",     
                 "prefix":0   
             },{
                 "layer":"ti", 
@@ -85,7 +85,7 @@
                 "prefix":10000000    
             },{
                 "layer":"car.municipios", 
-                "type":"single",     
+                "type":"municipios",     
                 "prefix":10000000    
             }
         ]

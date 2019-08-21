@@ -121,7 +121,7 @@ def insert_postgres(data_postgres):
                     
  
     psycopg2.extras.execute_values (
-    cur, sqlinsert, datainsert, template=None, page_size=500
+    cur, sqlinsert, datainsert, template=None, page_size=10000
     )
 
     conn.commit()

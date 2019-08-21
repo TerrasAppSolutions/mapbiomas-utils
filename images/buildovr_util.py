@@ -15,13 +15,9 @@ def ovr_integracao(path_input, part, info_project):
     files = [path_input + "/" + f for f in os.listdir(path_input) if f.endswith(".vrt")]
 
     for vrt in files:
-
         process_start = False
-
-        for year in years:
-            
+        for year in years:            
             if year in vrt:
-
                 process_start = True
 
         os_command = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBITS --config GDAL_CACHEMAX 1000 " + vrt + " 2 4 8 16"
@@ -36,13 +32,9 @@ def ovr_transicao(pathInput, part, info_project):
 
     files = [pathInput + "/" + f for f in os.listdir(pathInput) if f.endswith(".vrt") ]
     for vrt in files:
-
         process_start = False
-
         for years in transition_years:
-
             if years in vrt:
-
                 process_start = True
 
         if process_start:
@@ -50,12 +42,9 @@ def ovr_transicao(pathInput, part, info_project):
             print(osCommand)
             os.system(osCommand)
 
-
-
 def ovr_rgb(pathInput, part):
 
     files = [pathInput + "/" + f for f in os.listdir(pathInput) if f.endswith(".vrt")]
-
 
     for vrt in files:
         osCommand = "gdaladdo -r average --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC YCBCR --config BIGTIFF YES --config GDAL_CACHEMAX 1000 " + vrt + " 2 4 8 16"

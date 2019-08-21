@@ -27,22 +27,22 @@ def send_to_postgres_municipios(path_json, idprefix = 0):
     insert_cobertura_municipios_postgres.insert_postgres(data_estados_formatted)
 
 def get_path_json(path_folder, year, filter_layer):
-
-    print((filter_layer, year))
     json_path = insert_cobertura_postgres.get_cobertura_meta(path_folder,
     filter_layer, str(year))[0]['json_path']
     return json_path
 
-def send_to_postgres(path_json, idprefix = 0):
-    
+def send_to_postgres(path_json, idprefix = 0):    
     data = insert_cobertura_postgres.get_data(path_json)
     data_formatted = insert_cobertura_postgres.format_data(data, idprefix)
     insert_cobertura_postgres.insert_postgres(data_formatted)
 
-def send_single_layer(layer, idprefix, path_folder, years):
+def send_single_layer(layer, type_layer, idprefix, path_folder, years):
     for year in years:
         path_json = get_path_json(path_folder, year, layer)
-        send_to_postgres(path_json, idprefix)
+        if type_layer == 'single':
+            send_to_postgres(path_json, idprefix)
+        elif type_layer == 'municipios':
+            send_to_postgres_municipios(path_json, idprefix)
 
 def start_all_layers(info_project, dir_geojson):
     for info_layer in info_project['layers']:
@@ -53,7 +53,8 @@ def start_one_layer(info_project, dir_geojson, layer):
     info_layer = [_ for _ in info_project['layers'] if _['layer'] == layer][0]
     idprefix = info_layer['prefix']
     years = info_project['years']
-    send_single_layer(layer, idprefix, dir_geojson, years)
+    type_layer = info_layer['type']
+    send_single_layer( layer, type_layer, idprefix, dir_geojson, years)
 
 def interface():
 

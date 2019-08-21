@@ -36,11 +36,15 @@ def get_path_json(path_folder, years_pair, filter_layer):
     filter_layer, year1=year1, year2=year2)[0]['json_path']
     return json_path
 
-def send_single_layer(layer, idprefix, path_folder, transition_years):
+def send_single_layer(layer, type_layer, idprefix, path_folder, transition_years):
     for years in transition_years:
+        print(layer, years)
         try:
             path_json = get_path_json(path_folder, years, layer)
-            send_to_postgres(path_json, idprefix)
+            if type_layer == 'single':
+                send_to_postgres(path_json, idprefix)
+            elif type_layer == 'municipios':
+                send_to_postgres_municipios(path_json, idprefix)
         except:
             print("ERROR", layer, years)
 
@@ -55,7 +59,9 @@ def start_one_layer(info_project, dir_geojson, layer):
 
     idprefix = info_layer['prefix']
     transition_years = info_project['transition_years']
-    send_single_layer(layer, idprefix, dir_geojson, transition_years)
+    type_layer = info_layer['type']
+
+    send_single_layer(layer, type_layer, idprefix, dir_geojson, transition_years)
 
 def interface():
 
