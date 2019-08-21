@@ -20,7 +20,7 @@ def ovr_integracao(path_input, part, info_project):
             if year in vrt:
                 process_start = True
 
-        os_command = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBITS --config GDAL_CACHEMAX 1000 " + vrt + " 2 4 8 16"
+        os_command = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBITS --config BIGTIFF_OVERVIEW YES  --config GDAL_CACHEMAX 1000 " + vrt + " 2 4 8 16"
 
         if process_start:
             print(os_command)
@@ -38,7 +38,7 @@ def ovr_transicao(pathInput, part, info_project):
                 process_start = True
 
         if process_start:
-            osCommand = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBITS --config GDAL_CACHEMAX 1000 " + vrt + " 2 4 8 16"
+            osCommand = "gdaladdo -r mode --config COMPRESS_OVERVIEW PACKBITS --config BIGTIFF_OVERVIEW YES  --config GDAL_CACHEMAX 1000 " + vrt + " 2 4 8 16"
             print(osCommand)
             os.system(osCommand)
 
