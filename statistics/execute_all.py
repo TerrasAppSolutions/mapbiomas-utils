@@ -10,11 +10,11 @@ def export_server(info):
     export_geojson_GCS_to_server(gcs_url, dir_dst)
 
 def insert_cobertura(info):
-    dir_geojson = info["statistics"]["folder"]["all_dev"]
+    dir_geojson = info["statistics"]["folder"]["all"]
     insert_cobertura_interface.start_all_layers(info, dir_geojson)
 
 def insert_transicao(info):
-    dir_geojson = info["statistics"]["folder"]["all_dev"]
+    dir_geojson = info["statistics"]["folder"]["all"]
     insert_transition_interface.start_all_layers(info, dir_geojson)
 
 def start(col, project='brasil'):
