@@ -59,7 +59,7 @@ def vrt_rgb(pathInput, pathOutput):
 
     for band in bands:
         year = str(integrationYears[band])
-        pathImageInput = pathInput + '/mosaic-rgb-collection1-' + year +  '*.tif'
+        pathImageInput = pathInput + '/mosaic-rgb-collection3-' + year +  '*.tif'
         pathImageOutput = pathOutput + "/RGB_" + str(integrationYears[band]) + '.vrt'
 
         osCommand = 'gdalbuildvrt -allow_projection_difference -overwrite ' + \

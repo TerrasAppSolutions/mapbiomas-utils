@@ -1,0 +1,54 @@
+"id","name","categoria","parent_id"
+1,Transporte,1,0
+2,Energia,1,0
+3,Aquaviário,2,1
+4,Aeroviário,2,1
+5,Combustíveis,2,2
+6,Ferroviário,2,1
+7,Setor Elétrico,2,2
+8,Rodoviário,2,1
+9,Dutovia,2,1
+10,Porto,3,3
+11,Aguaduto,3,9
+12,Bases de Distribuição,3,5
+13,Combustíveis Fósseis,3,5
+14,Combustíveis Renováveis,3,5
+15,Eclusa,3,3
+16,Estação de Transbordo de Cargas,3,3
+17,Gasoduto,3,9
+18,Geração,3,7
+19,Hidrovia,3,3
+20,Infraestrutura,3,7
+21,Instalação Portuária de Turismo,3,3
+22,Instalação Portuária sob Registro,3,3
+23,Mineroduto,3,9
+24,Não Identificado,3,9
+25,Oleoduto,3,9
+26,Poliduto,3,9
+27,Rodovia Estadual,3,8
+28,Rodovia Federal,3,8
+29,Terminal de Uso Privado,3,3
+30,Base de Gás Liquefeito de Petróleo,4,12
+31,Geração Não-Renovável,4,18
+32,Geração Renovável,4,18
+33,Base de Combustíveis Líquidos,4,12
+34,Subestação,4,20
+35,Usina de Biodiesel,4,14
+36,Usina de Biogás,4,14
+37,Linha de Transmissão,4,20
+38,Usina de Etanol,4,14
+39,Gás,4,13
+40,Combustíveis Líquidos,4,13
+41,Pequena Central Hidrelétrica,5,32
+42,Usina Hidrelétrica,5,32
+43,Usina Solar Fotovoltaica,5,32
+44,Ponto de Entrega de Gás,5,39
+45,Estação de Compressão,5,39
+46,Refinarias de Petróleo e Outras Instalações de Processamento,5,40
+47,Usina Termelétrica a Biomassa,5,32
+50,Usina Termonuclear,5,31
+48,Usina Termelétrica a Combustível Fóssil,5,31
+49,Terminal de Armazenamento e Distribuição de Petróleo e Derivados,5,40
+51,Unidade de Processamento de Gás Natural,5,40
+52,Usina Eólica,5,32
+53,Aeródromo,3,4
