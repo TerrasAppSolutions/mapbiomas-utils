@@ -50,7 +50,7 @@ def start(col, project='brasil'):
 #     export_to_server_integracao(info)
 #     create_vrt_integracao(info)
     
-    export_to_server_transicao(info)
+#     export_to_server_transicao(info)
     create_vrt_transicao(info)
 
 
