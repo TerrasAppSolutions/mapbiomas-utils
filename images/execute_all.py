@@ -16,13 +16,25 @@ def export_to_server(info):
     dir_dst = info["folders"]["transicao"]
     export_images_GCS_to_server(gcs_url, dir_dst)
 
-def create_vrt_ovr_integracao(info):
+def create_vrt_integracao(info):
     dir_src = info["folders"]["integracao"]
     dir_dst = info["folders"]["integracao_vrt"]
     buildvrt_util.vrt_integration(dir_src, dir_dst)
+    
+def create_vrt_transicao(info):
+    dir_src = info["folders"]["transicao"]
+    dir_dst = info["folders"]["transicao_vrt"]
+    buildvrt_util.vrt_transition(dir_src, dir_dst)
 
-    for part in range(1,5):
-        ovr_integracao(dir_dst, str(part), info)
+
+
+# def create_vrt_ovr_integracao(info):
+#     dir_src = info["folders"]["integracao"]
+#     dir_dst = info["folders"]["integracao_vrt"]
+#     buildvrt_util.vrt_integration(dir_src, dir_dst)
+
+#     for part in range(1,5):
+#         ovr_integracao(dir_dst, str(part), info)
 
 
 
@@ -31,7 +43,9 @@ def start(col, project='brasil'):
     info = get_info_project(project) 
     info = [item for item in info if item['col'] == col][0]
 
-    # export_to_server(info)
+    export_to_server(info)
+    create_vrt_integracao(info)
+    create_vrt_transicao(info)
     
 if __name__ == "__main__":
     start('4')
