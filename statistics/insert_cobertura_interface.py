@@ -38,11 +38,14 @@ def send_to_postgres(path_json, idprefix = 0):
 
 def send_single_layer(layer, type_layer, idprefix, path_folder, years):
     for year in years:
-        path_json = get_path_json(path_folder, year, layer)
-        if type_layer == 'single':
-            send_to_postgres(path_json, idprefix)
-        elif type_layer == 'municipios':
-            send_to_postgres_municipios(path_json, idprefix)
+        try:
+            path_json = get_path_json(path_folder, year, layer)
+            if type_layer == 'single':
+                send_to_postgres(path_json, idprefix)
+            elif type_layer == 'municipios':
+                send_to_postgres_municipios(path_json, idprefix)
+        except:
+            print("ERROR", layer, year)
 
 def start_all_layers(info_project, dir_geojson):
     for info_layer in info_project['layers']:
