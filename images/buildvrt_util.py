@@ -51,9 +51,9 @@ def vrt_transition(pathInput, pathOutput, info):
         os.system(osCommand)
 
 
-def vrt_rgb(pathInput, pathOutput):
+def vrt_rgb(pathInput, pathOutput, info):
 
-    integrationYears = get_integration_years()
+    integrationYears = get_integration_years(info)
 
     bands = range(0,len(integrationYears))
 
@@ -97,7 +97,7 @@ def interface():
         vrt_transition(dir_src, dir_dst, info)
 
     if colecao == 'rgb':
-        vrt_rgb(dir_src, dir_dst)
+        vrt_rgb(dir_src, dir_dst, info)
 
 
 if __name__ == "__main__":
