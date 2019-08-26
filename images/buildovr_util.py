@@ -47,7 +47,7 @@ def ovr_rgb(pathInput, part):
     files = [pathInput + "/" + f for f in os.listdir(pathInput) if f.endswith(".vrt")]
 
     for vrt in files:
-        osCommand = "gdaladdo -r average --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC YCBCR --config BIGTIFF YES --config GDAL_CACHEMAX 1000 " + vrt + " 2 4 8 16"
+        osCommand = "gdaladdo -r average --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC YCBCR --config BIGTIFF YES --config GDAL_CACHEMAX 3000 " + vrt + " 2 4 8 16"
         print(osCommand)
         os.system(osCommand)
 
