@@ -47,9 +47,10 @@ def ovr_rgb(pathInput, part):
     files = [pathInput + "/" + f for f in os.listdir(pathInput) if f.endswith(".vrt")]
 
     for vrt in files:
-        osCommand = "gdaladdo -r average --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC YCBCR --config BIGTIFF YES --config GDAL_CACHEMAX 3000 " + vrt + " 2 4 8 16"
-        print(osCommand)
-        os.system(osCommand)
+        if 'RGB_PAIS_BRASIL_2018.vrt' in vrt:
+            osCommand = "gdaladdo -r average --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC YCBCR --config BIGTIFF YES --config GDAL_CACHEMAX 3000 " + vrt + " 2 4 8 16"
+            print(osCommand)
+            os.system(osCommand)
 
 
 def interface():
