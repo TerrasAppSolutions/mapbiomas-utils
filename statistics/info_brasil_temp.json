@@ -51,42 +51,13 @@
             },
             "folder":{
                 "all":"/data/gcloud_stats/COLECAO4/COLECAO4",
-                "all_dev":"~/BASE_DADOS/statistics"
+                "all_dev":"/home/dyeden/BASE_DADOS/statistics"
             }
         },
-        "layers":[
-            {
-                "layer":"biomas", 
-                "type":"single",       
-                "prefix":0
-            },{
-                "layer":"bacias.nivel.1", 
-                "type":"single",       
-                "prefix":7000000
-            },{
-                "layer":"bacias.nivel.2", 
-                "type":"single",     
-                "prefix":7100000    
-            },{
+        "layers":[{
                 "layer":"municipios", 
                 "type":"municipios",     
                 "prefix":0   
-            },{
-                "layer":"ti", 
-                "type":"single",     
-                "prefix":6000000   
-            },{
-                "layer":"uc", 
-                "type":"single",     
-                "prefix":6100000    
-            },{
-                "layer":"car.biomas", 
-                "type":"single",     
-                "prefix":10000000    
-            },{
-                "layer":"car.municipios", 
-                "type":"municipios",     
-                "prefix":10000000    
             }
         ]
     }

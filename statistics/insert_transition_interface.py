@@ -33,20 +33,23 @@ def get_path_json(path_folder, years_pair, filter_layer):
     year1 = years_pair.split('_')[0]
     year2 = years_pair.split('_')[1]
     json_path = insert_transition_postgres.get_transitions_meta(path_folder,
-    filter_layer, year1=year1, year2=year2)[0]['json_path']
+    filter_layer, year1=year1, year2=year2)
+    
+    print(filter_layer, path_folder)
+    json_path = json_path[0]['json_path']
     return json_path
 
 def send_single_layer(layer, type_layer, idprefix, path_folder, transition_years):
     for years in transition_years:
         print(layer, years)
-        # try:
-        path_json = get_path_json(path_folder, years, layer)
-        if type_layer == 'single':
-            send_to_postgres(path_json, idprefix)
-        elif type_layer == 'municipios':
-            send_to_postgres_municipios(path_json, idprefix)
-        # except Exception as e:
-        #     print("ERROR", e, layer, years)
+        try:
+            path_json = get_path_json(path_folder, years, layer)
+            if type_layer == 'single':
+                send_to_postgres(path_json, idprefix)
+            elif type_layer == 'municipios':
+                send_to_postgres_municipios(path_json, idprefix)
+        except Exception as e:
+            print("ERROR", e, layer, years)
 
 def start_all_layers(info_project, dir_geojson):
     for info_layer in info_project['layers']:
