@@ -135,6 +135,6 @@ def start(path_csv):
     write_mapfile(text, "style_coverage.map")
 
 if __name__ == "__main__":
-    path_csv = "./data/legenda_brasil_col4_20190814.csv"   
+    path_csv = "./data/legenda_brasil_col4_20190829.csv"   
 
     start(path_csv)  

@@ -70,7 +70,7 @@ def start(path_csv, versao):
     update_db_postgres(data)
 
 if __name__ == "__main__":
-    path_csv = "./data/legenda_brasil_col4_20190814.csv"
+    path_csv = "./data/legenda_brasil_col4_20190829.csv"
     versao = 4
     start(path_csv, versao)
 

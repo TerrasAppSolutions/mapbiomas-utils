@@ -250,6 +250,13 @@ CLASS
 END
 
 CLASS
+  EXPRESSION ([pixel] = 29 AND !("29" IN '%classification_ids%') AND ("10" IN '%classification_ids%'))
+  STYLE 
+    COLOR "#BBFCAC"
+  END
+END
+
+CLASS
   EXPRESSION ([pixel] = 32 AND !("32" IN '%classification_ids%') AND ("10" IN '%classification_ids%'))
   STYLE 
     COLOR "#BBFCAC"
@@ -519,13 +526,6 @@ END
 
 CLASS
   EXPRESSION ([pixel] = 25 AND !("25" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
-  STYLE 
-    COLOR "#EA9999"
-  END
-END
-
-CLASS
-  EXPRESSION ([pixel] = 29 AND !("29" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
   STYLE 
     COLOR "#EA9999"
   END
