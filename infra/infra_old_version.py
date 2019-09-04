@@ -76,7 +76,10 @@ def format_data(data_pandas, col_territorio='featureid'):
 
 
 def insert_postgres(data_postgres):
-    conn = psycopg2.connect("dbname='postgres' user='postgres' host='localhost' port='5432' password='postgres'")
+    # conn = psycopg2.connect("dbname='postgres' user='postgres' host='localhost' port='5432' password='postgres'")
+
+    conn = psycopg2.connect(dbname=config.postgres_db, user=config.postgres_user, host=config.postgres_host, port=config.postgres_port, password=config.postgres_password)
+
 
     cur = conn.cursor()
 
