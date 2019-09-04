@@ -153,12 +153,9 @@ def get_geojsons(path_folder):
         for name in files:
             if name[-8:] == ".geojson":
                 paths.append(os.path.join(path, name))
-<<<<<<< HEAD
-                
+
     return paths
-=======
-
-
+    
 def get_shapefiles(path_folder):
     paths = []
     for path, subdirs, files in os.walk(path_folder):
@@ -314,4 +311,3 @@ def insert_postgres_buffer(datainsert):
     conn.commit()
     conn.close()
 
->>>>>>> 7bd1a8dced191f2a842dd02a8d6cecf097cc8776
