@@ -14,9 +14,9 @@ def insert_cobertura(path_geojson):
     data_pais = infra_lib.format_data(data_pais, col_territorio='PAIS')
 
 
-    infra_lib.insert_postgres(data_municipios)
-    infra_lib.insert_postgres(data_estados)
-    infra_lib.insert_postgres(data_pais)       
+    infra_lib.insert_postgres_stats(data_municipios)
+    infra_lib.insert_postgres_stats(data_estados)
+    infra_lib.insert_postgres_stats(data_pais)       
 
 
 def start(project='brasil', col='4'):
