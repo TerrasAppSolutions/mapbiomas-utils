@@ -28,7 +28,11 @@ def start(project='brasil', col='4'):
     paths_geojson = infra_lib.get_geojsons(info["statistics"]['folder']['all']) 
     
     for path in paths_geojson:
-        insert_cobertura(path)
+        try:
+            insert_cobertura(path)
+        except Exception as e:
+            print(str(e))
+
 
     
 if __name__ == "__main__":
