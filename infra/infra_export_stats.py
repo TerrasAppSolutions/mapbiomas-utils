@@ -26,8 +26,13 @@ def start(project='brasil', col='4'):
     info = [item for item in info if item['col'] == col][0]
     
     paths_geojson = infra_lib.get_geojsons(info["statistics"]['folder']['all']) 
+
+    [path for path in paths_geojson if 'infra-5053-' in path]
+    [path for path in paths_geojson if 'infra-10053-' in path]
+    [path for path in paths_geojson if 'infra-20053-' in path]
     
     for path in paths_geojson:
+        print(path)
         try:
             insert_cobertura(path)
         except Exception as e:
@@ -37,3 +42,6 @@ def start(project='brasil', col='4'):
     
 if __name__ == "__main__":
     start()
+
+
+    gs://mapbiomas-dev-storage/ESTATISTICA_GEE/COLECAO4/INFRA/COBERTURAV2/collection-4.0-cobertura-infra-10006-1985-2-.geojson
