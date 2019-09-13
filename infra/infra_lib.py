@@ -122,7 +122,7 @@ def get_data(path_json):
         info['infraid'] = int(item['infraid'])
         if info['featureid'] == 0:
             continue
-        if info['infraid'] in [10053, 20053, 5053]:
+        if info['infraid'] not in [10053, 20053, 5053]:
             continue
         for v, area in item['data']:
             if area > 0:
