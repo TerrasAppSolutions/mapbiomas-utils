@@ -44,7 +44,7 @@
             },
             "folder":{
                 "all":"/data/gcloud_stats/COLECAO4/INFRA",
-                "all_dev":"/home/dyeden/BASE_DADOS/statistics/infra"
+                "all_dev":"/data/gcloud_stats/COLECAO_DEV/INFRA"
             }
         },
         "layers":[
