@@ -1,8 +1,6 @@
 # mapbiomas-utils
 
-> Routines scripts to help to automate the collections updates from mapbiomas
+Routines scripts that help to automate the collection updates from mapbiomas
 
-## **Images for mapserver**
-
-### Execute images/execute_all_tasks.py
+## **Updating Images**
 
