@@ -14,9 +14,9 @@ def insert_cobertura(path_geojson):
     data_pais = infra_lib.format_data(data_pais, col_territorio='PAIS')
 
 
-    infra_lib.insert_postgres(data_municipios)
-    infra_lib.insert_postgres(data_estados)
-    infra_lib.insert_postgres(data_pais)       
+    infra_lib.insert_postgres_stats(data_municipios)
+    infra_lib.insert_postgres_stats(data_estados)
+    infra_lib.insert_postgres_stats(data_pais)       
 
 
 def start(project='brasil', col='4'):
@@ -25,10 +25,16 @@ def start(project='brasil', col='4'):
 
     info = [item for item in info if item['col'] == col][0]
     
-    paths_geojson = infra_lib.get_geojsons(info["statistics"]['folder']['all_dev']) 
+    paths_geojson = infra_lib.get_geojsons(info["statistics"]['folder']['all']) 
+
     
     for path in paths_geojson:
-        insert_cobertura(path)
+        print(path)
+        try:
+            insert_cobertura(path)
+        except Exception as e:
+            print(str(e))
+
 
     
 if __name__ == "__main__":

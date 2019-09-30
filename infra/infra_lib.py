@@ -86,7 +86,7 @@ def format_data(data_pandas, col_territorio='featureid'):
     return data_result
 
 
-def insert_postgres(data_postgres):
+def insert_postgres_stats(data_postgres):
 
     conn = psycopg2.connect(dbname=config.postgres_db, user=config.postgres_user, host=config.postgres_host, port=config.postgres_port, password=config.postgres_password)
 
@@ -153,9 +153,8 @@ def get_geojsons(path_folder):
         for name in files:
             if name[-8:] == ".geojson":
                 paths.append(os.path.join(path, name))
-                
-    return paths
 
+    return paths
 
 def get_shapefiles(path_folder):
     paths = []
