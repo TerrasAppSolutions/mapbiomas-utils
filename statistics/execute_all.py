@@ -24,8 +24,8 @@ def insert_transicao(info):
 def start(col, project='brasil'):
     info = get_info_project(project)
     info = [item for item in info if item['col'] == col][0]
-    # export_server(info)
-    # insert_cobertura(info)
+    export_server(info)
+    insert_cobertura(info)
     insert_transicao(info)
 
 

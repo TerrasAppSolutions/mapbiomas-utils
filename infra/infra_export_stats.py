@@ -38,4 +38,4 @@ def start(project='brasil', col='4'):
 
     
 if __name__ == "__main__":
-    start()
+    start(col='4')
