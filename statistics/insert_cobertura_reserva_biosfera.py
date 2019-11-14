@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import psycopg2
 import psycopg2.extras
@@ -7,17 +8,32 @@ import config
 from functools import reduce
 
 
+def get_all_geojsons_paths(path_folder):
+    geojsons_paths = []
+    for root, dirs, files in os.walk(path_folder):
+        geojsons_paths = geojsons_paths + [
+            os.path.join(root, file) for file in files if file.endswith(".geojson")
+        ]
+    return geojsons_paths
+
+
+def filter_geojsons_by_cobertura(list_geojsons_path):
+    result = []
+    for json_path in list_geojsons_path:
+        result.append(json_path)
+    return result
+
+
 def get_data(path_json):
 
     data = json.load(open(path_json))
     data = map(lambda item: item["properties"], data["features"])
     result = []
     for item in data:
-        if int(item["featureid"]) == 0:
-            continue
         info = {}
         info["year"] = int(item["ANO"])
         info["featureid"] = int(item["featureid"])
+        info["themeid"] = int(item["themeid"])
         for v, area in item["data"]:
             if area > 0:
                 info[str(v)] = area
@@ -26,53 +42,18 @@ def get_data(path_json):
 
     df.fillna(0.0, inplace=True)
 
-    df["UF"] = df["featureid"].astype(str).str[0:2].astype(int)
-    df["PAIS"] = 10
     return df
 
 
-def get_data_municipios(data_frame):
-
-    data_pandas = data_frame.drop(["UF", "PAIS"], axis=1)
-
-    data_pandas = data_frame.T.to_dict().values()
-
-    return data_pandas
-
-
-def get_data_estados(data_frame):
-
-    data_pandas = (
-        data_frame.drop(["featureid", "PAIS"], axis=1)
-        .groupby(["UF", "year"])
-        .sum()
-        .reset_index()
-    )
-
-    data_pandas = data_pandas.T.to_dict().values()
-
-    return data_pandas
-
-
-def get_data_pais(data_frame):
-
-    data_pandas = (
-        data_frame.drop(["featureid", "UF"], axis=1)
-        .groupby(["PAIS", "year"])
-        .sum()
-        .reset_index()
-    )
-
-    data_pandas = data_pandas.T.to_dict().values()
-
-    return data_pandas
-
-
-def format_data(data_pandas, col_territorio="featureid", idprefix=0):
+def format_data(data, col_territorio="featureid", idprefix=0):
     classes = [str(i) for i in range(0, 34)]
 
+    data = (
+        data.groupby([col_territorio, "year"]).sum().reset_index().T.to_dict().values()
+    )
+
     data_result = []
-    for item in data_pandas:
+    for item in data:
 
         area_total = reduce(
             lambda a, b: a + item.get(b, 0.0), classes[1:], item.get("0", 0.0)
@@ -129,3 +110,25 @@ def insert_postgres(data_postgres):
 
     conn.commit()
     conn.close()
+
+
+if __name__ == "__main__":
+    # path = "/home/dyeden/data/stats_biosfera/RESERVA_BIOSFERA/COBERTURAV1/collection-4.0-cobertura-reserva.biosfera-5-1991-1-.geojson"
+    path_folder = "/home/dyeden/data/stats_biosfera/COBERTURAV1"
+
+    paths = get_all_geojsons_paths(path_folder)
+
+    paths = filter_geojsons_by_cobertura(paths)
+
+    for path in paths:
+        print(path)
+        data = get_data(path)
+        data_formatted = format_data(data, col_territorio="themeid", idprefix=80000000)
+        insert_postgres(data_formatted)
+
+        # print(len(paths))
+
+        # data = get_data(path)
+        # data_formatted = format_data(data, col_territorio="themeid", idprefix=80000000)
+        # print(data_formatted)
+        # pass

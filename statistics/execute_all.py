@@ -1,4 +1,3 @@
-
 from info_lib import get_info_project
 from export_gcs_server import export_geojson_GCS_to_server
 import insert_cobertura_interface
@@ -21,13 +20,13 @@ def insert_transicao(info):
     insert_transition_interface.start_all_layers(info, dir_geojson)
 
 
-def start(col, project='brasil'):
+def start(col, project="brasil"):
     info = get_info_project(project)
-    info = [item for item in info if item['col'] == col][0]
+    info = [item for item in info if item["col"] == col][0]
     export_server(info)
     insert_cobertura(info)
     insert_transicao(info)
 
 
 if __name__ == "__main__":
-    start('4')
+    start("4")
